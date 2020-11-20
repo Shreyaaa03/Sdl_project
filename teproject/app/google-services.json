@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845187295867",
+    "firebase_url": "https://teproject-sdl.firebaseio.com",
+    "project_id": "teproject-sdl",
+    "storage_bucket": "teproject-sdl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845187295867:android:c45652ea20e4f5c27190de",
+        "android_client_info": {
+          "package_name": "com.example.teproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845187295867-4nrfpb8q181mdqc7lm36hojav0147ppq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSdm1JA1PjZfC9xQpW-ZVwn9-R5C_OCAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845187295867-4nrfpb8q181mdqc7lm36hojav0147ppq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
