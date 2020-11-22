@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ public class Register extends AppCompatActivity {
     Button mSignUpBtn, mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class Register extends AppCompatActivity {
                 finish();
             }
         });
+
+        radioGroup = findViewById(R.id.rdgroup);
 
         mSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
