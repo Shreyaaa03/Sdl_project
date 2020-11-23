@@ -55,13 +55,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        System.out.println("hell11");
         switch (item.getItemId()){
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-//                System.out.println("hell");
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
+                break;
+            case R.id.nav_profile:
+                startActivity(new Intent(getApplicationContext(), myprofile.class));
+                break;
         }
         return true;
     }
