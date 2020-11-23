@@ -16,10 +16,9 @@
         android:lineSpacingExtra="10sp"
         app:layout_constraintBottom_toTopOf="@+id/lpassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.691"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.651" />
 
     <EditText
         android:id="@+id/lpassword"
@@ -32,7 +31,6 @@
         android:lineSpacingExtra="10sp"
         app:layout_constraintBottom_toTopOf="@+id/lLoginbtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.691"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -72,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOGIN"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +84,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="654dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lSignUpbtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
