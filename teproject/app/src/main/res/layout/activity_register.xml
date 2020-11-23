@@ -62,11 +62,11 @@
         app:layout_constraintVertical_bias="0.249" />
 
     <EditText
-        android:id="@+id/branch"
+        android:id="@+id/mobileNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Branch"
+        android:hint="Mobile Number"
         android:inputType="textPersonName"
         android:lineSpacingExtra="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +143,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/rollnostudent"
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
