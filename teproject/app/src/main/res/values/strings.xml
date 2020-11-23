@@ -9,6 +9,11 @@
     <string name="navigation_student">Students</string>
     <string name="navigation_teacher">Mentors</string>
     <string name="navigation_projects">Projects</string>
+    <string name="groupid">Group ID</string>
+    <string name="mentorid">Mentor ID</string>
+    <string name="problem_statement">Problem Statement</string>
+    <string name="members">Members</string>
+    <string name="techstack">Tech Stack</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

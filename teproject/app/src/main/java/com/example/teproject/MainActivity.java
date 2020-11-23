@@ -97,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_profile:
                 startActivity(new Intent(getApplicationContext(), myprofile.class));
                 break;
+            case R.id.nav_group_profile:
+                startActivity(new Intent(getApplicationContext(), GroupProfile.class));
+                break;
         }
         return true;
     }
