@@ -6,11 +6,11 @@
         android:title="@string/navigation_home" />
     <item
         android:id="@+id/nav_students"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_baseline_supervisor_account_24"
         android:title="@string/navigation_student" />
     <item
         android:id="@+id/nav_teachers"
-        android:icon="@drawable/ic_baseline_supervisor_account_24"
+        android:icon="@drawable/ic_teacher"
         android:title="@string/navigation_teacher" />
     <item
         android:id="@+id/nav_projects"
