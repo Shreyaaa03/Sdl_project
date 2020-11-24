@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Teproject">
-        <activity android:name=".GroupProfile"></activity>
+        <activity android:name=".MyDomain"></activity>
+        <activity android:name=".GroupProfile" />
         <activity android:name=".GroupProfileFragment" />
         <activity android:name=".Register">
             <intent-filter>
