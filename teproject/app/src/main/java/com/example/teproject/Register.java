@@ -138,8 +138,14 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this, "Account created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
+                            DocumentReference docR_c2k = fStore.document("year/"+year+"- "+(year+1)+"/IDS/"+fAuth.getCurrentUser().getUid());
+                            Map<String, Object> idandc2k = new HashMap<>();
+                            idandc2k.put("RegID",regID);
+                            docR_c2k.set(idandc2k);
+
                             // ADD DATA TO FIRESTORE
                             DocumentReference docR = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+regID);
+
                             //     DocumentReference docref = fStore.collection("Year").document(year+"-"+(year+1)).collection("Users").document(regID);
                             //     DocumentReference docr = fStore.collection("Users").document(regID);
                             Map<String, Object> datatosave = new HashMap<>();
