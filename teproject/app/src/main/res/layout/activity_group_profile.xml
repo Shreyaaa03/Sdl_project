@@ -1,258 +1,361 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:orientation="vertical"
+    android:background="#000"
     tools:context=".GroupProfile">
 
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/CardView.Light"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="7dp"
-        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="true"
+        android:paddingBottom="10dp">
 
-        app:cardPreventCornerOverlap="true">
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="10dp"
-            android:text="My Group"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold">
+            android:paddingBottom="10dp"
+            android:background="#0C0630">
 
-        </TextView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="25dp"
-            app:cardCornerRadius="15dp"
-            app:cardPreventCornerOverlap="true">
-
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/home_gradient">
-
-                <TextView
-                    style="@style/HomeCardTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/groupid"
-                    android:textSize="17dp"></TextView>
-
-                <EditText
-                    style="@style/HomeCardContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:text="ABC"
-                    android:textSize="15dp">
-
-                </EditText>
-
-                <TextView
-                    style="@style/HomeCardTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="50dp"
-                    android:text="@string/mentorid"
-                    android:textSize="17dp"></TextView>
-
-                <EditText
-                    style="@style/HomeCardContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="50dp"
-                    android:text="XYZ"
-                    android:textSize="15dp">
-
-                </EditText>
-
-                <TextView
-                    style="@style/HomeCardTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="90dp"
-                    android:text="@string/problem_statement"
-                    android:textSize="17dp"></TextView>
-
-                <EditText
-                    style="@style/HomeCardContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="115dp"
-                    android:text="XXYYZZ"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="15dp">
-
-                </EditText>
-            </RelativeLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="220dp"
-            app:cardCornerRadius="15dp"
-            app:cardPreventCornerOverlap="true">
+                android:layout_height="210dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/group" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/home_gradient"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="220dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/members"
-                    style="@style/HomeCardTitle"
-                    android:textSize="17dp"
+                    app:cardCornerRadius="15dp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/members">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp">
 
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/m1"
-                    android:text="Tanushree"
-                    android:textSize="17dp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/m2"
-                    android:text="Shreya"
-                    android:textSize="17dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/white"
-                    >
+                        <ImageView
+                            android:id="@+id/image1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_info_24" />
 
-                </TextView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/m3"
-                    android:text="Prathamesh T"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="17dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/white">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="@string/groupid"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            >
 
-                </TextView>
+                        </TextView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/m4"
-                    android:text="Prathamesh S"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="17dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="6dp"
-                    android:textColor="@color/white">
+                        <TextView
+                            android:id="@+id/groupid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="ABCD"
+                            android:textSize="15dp"
+                            style="@style/TextAppearance.AppCompat.Body1"></TextView>
+                    </LinearLayout>
 
-                </TextView>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-         <androidx.cardview.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             app:cardCornerRadius="15dp" 
-             android:layout_marginLeft="25dp"
-             android:layout_marginRight="25dp"
-             android:layout_marginTop="376dp"
-             app:cardPreventCornerOverlap="true">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardPreventCornerOverlap="true">
 
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:orientation="vertical"
-                 android:background="@drawable/home_gradient">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
 
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="@string/techstack"
-                     style="@style/HomeCardTitle"
-                     android:layout_marginLeft="10dp"
-                     android:textSize="17dp"
-                     />
+                        <ImageView
+                            android:id="@+id/image2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_assignment_24" />
 
-                 <EditText
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:textColor="@color/white"
-                     android:textSize="15dp"
-                     android:layout_marginTop="5dp"
-                     android:layout_marginLeft="10dp"
-                     android:text="AA">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                 </EditText>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:text="@string/problem_statement"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium">
 
-                 <EditText
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:textColor="@color/white"
-                     android:textSize="15dp"
-                     android:layout_marginTop="2dp"
-                     android:layout_marginLeft="10dp"
-                     android:text="AB">
+                            </TextView>
 
-                 </EditText>
-
-                 <EditText
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:textColor="@color/white"
-                     android:textSize="15dp"
-                     android:layout_marginTop="2dp"
-                     android:layout_marginLeft="10dp"
-                     android:layout_marginBottom="5dp"
-                     android:text="BB">
-
-                 </EditText>
+                            <TextView
+                                android:id="@+id/problem_statement_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:text="Bleh bleh bleh..."
+                                android:textSize="15dp"
+                                style="@style/TextAppearance.AppCompat.Body1"></TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/image3"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_baseline_engineering_24" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="@string/mentorid"
+                                    android:textSize="15dp"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/mentor_id"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="XYZ"
+                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
 
-             </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-         </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/view4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/image4"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_baseline_groups_24" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="@string/members"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/member1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="AAAA"
+                                    android:textSize="15dp"
+                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+
+                                <TextView
+                                    android:id="@+id/member2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="BBBB"
+                                    android:textSize="15dp"
+                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+
+                                <TextView
+                                    android:id="@+id/member3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="CCCC"
+                                    android:textSize="15dp"
+                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+
+                                <TextView
+                                    android:id="@+id/member4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="DDDD"
+                                    android:textSize="15dp"
+                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardPreventCornerOverlap="true"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/image5"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_baseline_code_24" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/group5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:text="@string/techstack"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tech_stack_id"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:textSize="15dp"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1">
+                                </TextView>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+
+</ScrollView>
