@@ -10,14 +10,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DomainsAdapter extends BaseExpandableListAdapter {
+
+    private int year;
+    private FirebaseFirestore db;
+    FirebaseAuth fAuth;
+    private CollectionReference domainsRef;
+    private CollectionReference userdomainsRef;
 
     private static final String TAG = "DomainsAdapter";
 
@@ -42,84 +60,100 @@ public class DomainsAdapter extends BaseExpandableListAdapter {
     public DomainsAdapter() {
     }
 
-    public DomainsAdapter(Context c) {
+    public DomainsAdapter(Context c, List<String> groups, ArrayList<ArrayList<String>> children,
+                          List<String> usergroups, ArrayList<ArrayList<String>> userchildren,
+                          ArrayList<ArrayList<Integer>> check_states, HashMap<String, Integer> check_groups) {
+        // set the context
         this.context = c;
+        this.groups = groups;
+        this.children = children;
+        this.usergroups = usergroups;
+        this.userchildren = userchildren;
+        this.check_states = check_states;
+        this.check_groups = check_groups;
 
-        // setting original data
-        groups.add("AI");
-        groups.add("Cloud Computing");
-        groups.add("CyberSecurity");
-        groups.add("Big Data");
-
-        ArrayList<String> l1 = new ArrayList<>();
-        l1.add("AI SD 1");
-        l1.add("AI SD 2");
-        l1.add("AI SD 3");
-        l1.add("AI SD 4");
-        children.add(l1);
-
-        ArrayList<String> l2 = new ArrayList<>();
-        l2.add("CC SD 1");
-        l2.add("CC SD 2");
-        l2.add("CC SD 3");
-        l2.add("CC SD 4");
-        children.add(l2);
-
-        ArrayList<String> l3 = new ArrayList<>();
-        l3.add("CS SD 1");
-        l3.add("CS SD 2");
-        l3.add("CS SD 3");
-        children.add(l3);
-
-        ArrayList<String> l4 = new ArrayList<>();
-        l4.add("BD SD 1");
-        l4.add("BD SD 2");
-        children.add(l4);
-
-
-        // user's data
-        usergroups.add("AI");
-        usergroups.add("Cloud Computing");
-
-        ArrayList<String> s1 = new ArrayList<>();
-        s1.add("AI SD 1");
-        s1.add("AI SD 2");
-
-        ArrayList<String> s2 = new ArrayList<>();
-        s2.add("CC SD 3");
-        s2.add("CC SD 4");
-
-
-
-
-        // check_states is an array 1-> subdomain selected 0-> not selected
-        check_states = new ArrayList<>();
-//        initialize the states to all 0;
-        for (int i = 0; i < this.groups.size(); i++) {
-            ArrayList<Integer> tmp = new ArrayList<Integer>();
-            for (int j = 0; j < this.children.get(i).size(); j++) {
-                tmp.add(0);
-            }
-            check_states.add(tmp);
-        }
-
-        // Now, set the values in check_status depending upon user's preselected values
-        for(int i=0;i<s1.size();i++)
-            setStates(i, s1);
-
-        for(int i=0;i<s2.size();i++)
-            setStates(i, s2);
-
-        check_groups = new HashMap<>();
-        for (int i=0;i<groups.size();i++) {
-            check_groups.put(groups.get(i), 0);
-        }
-
-        for(int i=0;i<usergroups.size();i++) {
-            check_groups.put(usergroups.get(i), 1);
-        }
+//        // setting original data
+//        groups.add("AI");
+//        groups.add("Cloud Computing");
+//        groups.add("CyberSecurity");
+//        groups.add("Big Data");
+//
+//        Toast.makeText(context, groups.toString(), Toast.LENGTH_SHORT).show();
+//
+//
+//
+//        ArrayList<String> l1 = new ArrayList<>();
+//        l1.add("AI SD 1");
+//        l1.add("AI SD 2");
+//        l1.add("AI SD 3");
+//        l1.add("AI SD 4");
+//        children.add(l1);
+//
+//        ArrayList<String> l2 = new ArrayList<>();
+//        l2.add("CC SD 1");
+//        l2.add("CC SD 2");
+//        l2.add("CC SD 3");
+//        l2.add("CC SD 4");
+//        children.add(l2);
+//
+//        ArrayList<String> l3 = new ArrayList<>();
+//        l3.add("CS SD 1");
+//        l3.add("CS SD 2");
+//        l3.add("CS SD 3");
+//        children.add(l3);
+//
+//        ArrayList<String> l4 = new ArrayList<>();
+//        l4.add("BD SD 1");
+//        l4.add("BD SD 2");
+//        children.add(l4);
+////        // ----------------------------
+//
+//        // user's data
+//        usergroups.add("AI");
+//        usergroups.add("Cloud Computing");
+//        // ---------------------------------------
+//
+//        ArrayList<String> s1 = new ArrayList<>();
+//        s1.add("AI SD 1");
+//        s1.add("AI SD 2");
+//
+//        ArrayList<String> s2 = new ArrayList<>();
+//        s2.add("CC SD 3");
+//        s2.add("CC SD 4");
+//
+//
+//
+//        // check_states is an array 1-> subdomain selected 0-> not selected
+//        check_states = new ArrayList<>();
+////        initialize the states to all 0;
+//        for (int i = 0; i < this.groups.size(); i++) {
+//            ArrayList<Integer> tmp = new ArrayList<Integer>();
+//            for (int j = 0; j < this.children.get(i).size(); j++) {
+//                tmp.add(0);
+//            }
+//            check_states.add(tmp);
+//        }
+//
+//
+//
+//        // Now, set the values in check_status depending upon user's preselected values
+//        for(int i=0;i<s1.size();i++)
+//            setStates(i, s1);
+//
+//        for(int i=0;i<s2.size();i++)
+//            setStates(i, s2);
+//
+//        check_groups = new HashMap<>();
+//        for (int i=0;i<groups.size();i++) {
+//            check_groups.put(groups.get(i), 0);
+//        }
+//
+//        for(int i=0;i<usergroups.size();i++) {
+//            check_groups.put(usergroups.get(i), 1);
+//        }
 
     }
+
 
     private void setStates(int i, ArrayList<String> s1) {
         for(int j=0;j<this.groups.size();j++) {

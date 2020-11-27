@@ -42,6 +42,7 @@ public class Register extends AppCompatActivity {
     String rollno;
     Boolean role;
     FirebaseFirestore fStore;
+    private static final String TAG = "Register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class Register extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
 
         if(fAuth.getCurrentUser() != null){
+            // user already loggen in...Directly send to main screen
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
@@ -95,6 +97,7 @@ public class Register extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // user has already an account...Start login activity
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
             }
@@ -140,7 +143,10 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful()){
                             // AUTHENTICATION SUCCESSFUL
                             Toast.makeText(Register.this, "Account created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            // new account created!
+                            Intent intent = new Intent(getApplicationContext(), MyDomain.class);
+                            intent.putExtra("activity", TAG);
+                            startActivity(intent);
 
                             DocumentReference docR_c2k = fStore.document("year/"+year+"- "+(year+1)+"/IDS/"+fAuth.getCurrentUser().getUid());
                             Map<String, Object> idandc2k = new HashMap<>();

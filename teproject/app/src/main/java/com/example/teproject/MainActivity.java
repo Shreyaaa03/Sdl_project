@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     NavigationView navvw;
     BottomNavigationView bottomNav;
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(getApplicationContext(), GroupProfile.class));
                 break;
             case R.id.nav_domain:
-                startActivity(new Intent(getApplicationContext(), MyDomain.class));
+                Intent intent = new Intent(getApplicationContext(), MyDomain.class);
+                intent.putExtra("activity", TAG);
+                startActivity(intent);
                 break;
         }
         return true;
