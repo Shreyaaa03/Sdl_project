@@ -160,11 +160,17 @@ public class Register extends AppCompatActivity {
                                 datatosave.put("RollNo", rollno);
                             } else{
                                 datatosave.put("Role", false);
+                                datatosave.put("RollNo", "N.A.");
                             }
                             datatosave.put("Email", email);
                             datatosave.put("Branch", branch);
                             datatosave.put("Password", pass);
 
+                            datatosave.put("GroupID", "N.A.");
+                            datatosave.put("PhoneNo", "N.A.");
+                            datatosave.put("Linkedin", "N.A.");
+                            datatosave.put("Github", "N.A.");
+                            datatosave.put("Resume", "N.A.");
 
                             datatosave.put("RegistrationID", regID);
                             docR.set(datatosave).addOnCompleteListener(new OnCompleteListener<Void>() {
