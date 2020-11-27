@@ -126,6 +126,10 @@ public class Register extends AppCompatActivity {
                     mPassword.setError("Password must be >= 5 characters");
                     return;
                 }
+                if(regID.length() != 11){
+                    mRegistrationID.setError("Wrong format");
+                    return;
+                }
 
                 progressBar.setVisibility(View.VISIBLE);
 
