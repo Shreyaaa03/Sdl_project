@@ -106,7 +106,7 @@ public class Register extends AppCompatActivity {
                 String email = mEmail.getText().toString().trim();
                 String pass = mPassword.getText().toString().trim();
                 String name = mName.getText().toString();
-                String regID = mRegistrationID.getText().toString();
+                String regID = mRegistrationID.getText().toString().toUpperCase();
                 String branch = mBranch.getText().toString();
 
                 if(role){
@@ -124,6 +124,10 @@ public class Register extends AppCompatActivity {
                 }
                 if(pass.length() < 5){
                     mPassword.setError("Password must be >= 5 characters");
+                    return;
+                }
+                if(regID.length() != 11){
+                    mRegistrationID.setError("Wrong format");
                     return;
                 }
 
@@ -156,11 +160,16 @@ public class Register extends AppCompatActivity {
                                 datatosave.put("RollNo", rollno);
                             } else{
                                 datatosave.put("Role", false);
+                                datatosave.put("RollNo", "N.A.");
                             }
                             datatosave.put("Email", email);
                             datatosave.put("Branch", branch);
                             datatosave.put("Password", pass);
-
+                            datatosave.put("GroupID", "N.A.");
+                            datatosave.put("PhoneNo", "N.A.");
+                            datatosave.put("Linkedin", "N.A.");
+                            datatosave.put("Github", "N.A.");
+                            datatosave.put("Resume", "N.A.");
 
                             datatosave.put("RegistrationID", regID);
                             docR.set(datatosave).addOnCompleteListener(new OnCompleteListener<Void>() {
