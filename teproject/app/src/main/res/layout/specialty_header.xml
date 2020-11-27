@@ -3,16 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:id="@+id/header_linear"
+    android:layout_margin="2dp">
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list_parent"
+        android:layout_height="30dp"
+        android:id="@+id/specialty_header"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"/>
 
 </LinearLayout>
