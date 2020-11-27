@@ -125,7 +125,6 @@ public class HomeFragment extends Fragment {
 
     void addMemberToGrp(){
 
-
         Map<String, Object>datatosave2 = new HashMap<>();
         datatosave2.put("Members", arrayUnion(fireRegID));
 
