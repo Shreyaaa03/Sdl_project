@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,8 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
@@ -31,16 +31,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import static com.google.firebase.firestore.FieldValue.arrayUnion;
+
 public class HomeFragment extends Fragment {
 
     private TextView mCreateGroupText;
     private Button mCreateGrpBtn, mJoinGrpBtn;
     private Random rand;
-    private int code, year;
+    private EditText mJoinGroupTxt;
+    private int year, codeint;
     final ArrayList<Integer> codeArr = new ArrayList<>();
-    private String fireRegID, userUid;
+    private String fireRegID, userUid, code;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
+    private DocumentReference docRef, docRef2;
+    private boolean status;
 
     @Nullable
     @Override
@@ -53,6 +58,7 @@ public class HomeFragment extends Fragment {
         mCreateGrpBtn = v.findViewById(R.id.creategroupbtn);
         mJoinGrpBtn = v.findViewById(R.id.joingroupbtn);
         mCreateGroupText = v.findViewById(R.id.groupCodetext);
+        mJoinGroupTxt = v.findViewById(R.id.joingrptext);
         rand = new Random();
 
         fStore = FirebaseFirestore.getInstance();
@@ -68,64 +74,110 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    code = rand.nextInt((9999 - 100) + 1) + 10;
-                    DocumentReference docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
+                    codeint = rand.nextInt((9999 - 100) + 1) + 10;
+                    code = Integer.toString(codeint);
+                    docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
+                    docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
+
                     docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot documentSnapshot = task.getResult();
                             while(documentSnapshot.exists()){
-                                code = rand.nextInt((9999 - 100) + 1) + 10;
+                                codeint = rand.nextInt((9999 - 100) + 1) + 10;
+                                code = Integer.toString(codeint);
                             }
                             if(documentSnapshot.exists() == false){
                                 mCreateGrpBtn.setEnabled(false);
                                 mJoinGrpBtn.setEnabled(false);
-                                Map<String, Object>datatosave2 = new HashMap<>();
-                                datatosave2.put("Members", Arrays.asList(fireRegID));
+                                Log.d("TAG", "Reg is: "+ fireRegID);
 
-                                docRef.set(datatosave2, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful()){
-                                            Log.d("TAG", "Member successfully added");
-                                        } else{
-                                            Log.d("TAG", "Member not added!");
-                                        }
-                                    }
-                                });
+                                mCreateGroupText.setVisibility(View.VISIBLE);
+                                mCreateGroupText.setText("Group code: "+code + "\n" +
+                                        "Share it with group members only!!");
+
+                                addGroupID();
+
                             }
                         }
                     });
 
-                Log.d("TAG", "Reg is: "+ fireRegID);
+            }
+        });
 
-                mCreateGroupText.setVisibility(View.VISIBLE);
-                mCreateGroupText.setText("Group code: "+code + "\n" +
-                        "Share it with group members only!!");
-
-             //   DocumentReference docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
-                DocumentReference docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
-
-                Map<String, Object> datatosave = new HashMap<>();
-                datatosave.put("GroupID", code);
-
-                docRef2.update(datatosave).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Log.d("Hooray", "Task successful");
-                        }else{
-                            Log.d("Error", "There was an error!");
-                        }
-                    }
-                });
+        mJoinGrpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                code = mJoinGroupTxt.getText().toString().trim();
+                docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
+                docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
 
 
+                Log.d("TAG", "code is: "+ code);
 
+                addGroupID();
             }
         });
 
         return v;
+
+    }
+
+    void addMemberToGrp(){
+
+
+        Map<String, Object>datatosave2 = new HashMap<>();
+        datatosave2.put("Members", arrayUnion(fireRegID));
+
+            docRef.set(datatosave2, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Log.d("TAG", "Member successfully added");
+                        Toast.makeText(getActivity(), "You're a member of team: "+code, Toast.LENGTH_SHORT).show();
+                    } else{
+                        Log.d("TAG", "Member not added!");
+                        Toast.makeText(getActivity(), "You're in another team", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+
+
+    }
+
+    void addGroupID(){
+
+
+        docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                if(document.exists()){
+                    String groupid = document.getString("GroupID");
+                    if(groupid.equals("N.A.")){
+                        status = true;
+                        Map<String, Object> datatosave = new HashMap<>();
+                        datatosave.put("GroupID", code);
+
+                        docRef2.update(datatosave).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Log.d("Hooray", "GroupID added successfully");
+                                }else{
+                                    Log.d("Error", "There was an error!");
+                                }
+                            }
+                        });
+                        addMemberToGrp();
+                    } else{
+                        status = false;
+                        Log.d("TAG", "Already a group member!");
+                    }
+                }
+            }
+        });
 
     }
 
