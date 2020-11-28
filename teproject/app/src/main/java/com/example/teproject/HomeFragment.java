@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     private DocumentReference docRef, docRef2;
-    private boolean status;
+    private boolean status, exist, fireRole;
 
     @Nullable
     @Override
@@ -69,6 +69,10 @@ public class HomeFragment extends Fragment {
         String userEmail = user.getEmail();
 
         getIDS();
+
+        if(!fireRole){
+            mCreateGrpBtn.setEnabled(false);
+        }
 
         mCreateGrpBtn. setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +105,6 @@ public class HomeFragment extends Fragment {
                             }
                         }
                     });
-
             }
         });
 
@@ -111,11 +114,14 @@ public class HomeFragment extends Fragment {
                 code = mJoinGroupTxt.getText().toString().trim();
                 docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
                 docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
-
-
                 Log.d("TAG", "code is: "+ code);
-
-                addGroupID();
+                checkIfgroupExists();
+                if(exist){
+                    addGroupID();
+                }
+               else{
+                    Toast.makeText(getContext(), "Invalid group code", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -126,27 +132,28 @@ public class HomeFragment extends Fragment {
     void addMemberToGrp(){
 
         Map<String, Object>datatosave2 = new HashMap<>();
-        datatosave2.put("Members", arrayUnion(fireRegID));
-
+        if(fireRole){
+            datatosave2.put("Members", arrayUnion(fireRegID));
+        } else {
+            datatosave2.put("MentorID", fireRegID);
+        }
+        
             docRef.set(datatosave2, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         Log.d("TAG", "Member successfully added");
-                        Toast.makeText(getActivity(), "You're a member of team: "+code, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "You're a member of team: "+code, Toast.LENGTH_SHORT).show();
                     } else{
                         Log.d("TAG", "Member not added!");
-                        Toast.makeText(getActivity(), "You're in another team", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "You're in another team", Toast.LENGTH_SHORT).show();
 
                     }
                 }
             });
-
-
     }
 
     void addGroupID(){
-
 
         docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -179,6 +186,19 @@ public class HomeFragment extends Fragment {
         });
 
     }
+    void checkIfgroupExists(){
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                if(document.exists()){
+                    exist = true;
+                } else{
+                    exist = false;
+                }
+            }
+        });
+    }
 
     void getRegID(){
         DocumentReference dRef = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
@@ -189,7 +209,9 @@ public class HomeFragment extends Fragment {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
                     fireRegID = document.getString("RegistrationID");
+                    fireRole = document.getBoolean("Role");
                     Log.d("TAG", "data => " + document.getData());
+                    Log.d("TAG", "ROle is: "+ fireRole);
                 } else {
                     Log.d("TAG", "Error getting documents: ", task.getException());
                 }
