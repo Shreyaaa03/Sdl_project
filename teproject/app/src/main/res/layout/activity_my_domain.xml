@@ -10,40 +10,36 @@
     android:paddingRight="16dp"
     tools:context=".MyDomain">
 
+
     <TextView
         android:id="@+id/domain_page_title"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:gravity="center_horizontal"
         android:text="Your Domains and Subdomains"
-        android:textSize="24sp"
-        android:textColor="@color/black"
         android:textAlignment="center"
-        android:gravity="center_horizontal" />
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:textSize="24sp" />
 
     <ExpandableListView
+        android:id="@+id/domains_list"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:id="@+id/domains_list"
         android:layout_below="@id/domain_page_title"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="70dp">
 
     </ExpandableListView>
 
-
     <Button
         android:id="@+id/btn_save"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/domains_list"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginRight="60dp"
         android:text="Save Changes" />
 
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/domains_list"
-        android:layout_margin="20dp"
-        android:layout_toRightOf="@id/btn_save"
-        android:text="Next" />
+
 </RelativeLayout>

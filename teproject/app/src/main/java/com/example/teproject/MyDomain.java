@@ -36,7 +36,7 @@ public class MyDomain extends AppCompatActivity {
 
     ExpandableListView domainsList;
     DomainsAdapter adapter;
-    Button btnSave, btnNext;
+    Button btnSave;
     String RegID;
 
     private int year;
@@ -69,16 +69,16 @@ public class MyDomain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_domain);
 
-        btnNext = findViewById(R.id.btn_next);
+        btnSave = findViewById(R.id.btn_save);
         Intent intent = getIntent();
         activity = intent.getStringExtra("activity");
         if(activity.equals("Register")) {
-            btnNext.setVisibility(View.VISIBLE);
+            btnSave.setText("NEXT");
 
         } else if(activity.equals("MainActivity")) {
-            btnNext.setVisibility(View.GONE);
+            btnSave.setText("SAVE");
         } else {
-            btnNext.setVisibility(View.GONE);
+            btnSave.setText("SAVE");
         }
 
 
@@ -146,7 +146,7 @@ public class MyDomain extends AppCompatActivity {
                                                     Map<String, ArrayList<String>> subDomains = new HashMap<>();
                                                     subDomains = (Map<String, ArrayList<String>>) documentSnapshot.get("Domains");
 
-                                                    if(activity.equals("Register")) {
+                                                    if(activity.equals("Register") || subDomains == null) {
                                                         //
                                                     }
                                                     else {
@@ -212,7 +212,6 @@ public class MyDomain extends AppCompatActivity {
                                                 //        for(int i=0; i < adapter.getGroupCount(); i++)
                                                 //            domainsList.expandGroup(i);
 
-                                                btnSave = findViewById(R.id.btn_save);
                                                 btnSave.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View view) {
@@ -248,7 +247,8 @@ public class MyDomain extends AppCompatActivity {
                                                             }
                                                             msg += "\n";
                                                         }
-                                                        Toast.makeText(MyDomain.this, msg, Toast.LENGTH_SHORT).show();
+//                                                        Toast.makeText(MyDomain.this, msg, Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(MyDomain.this, "Details Saved!", Toast.LENGTH_SHORT).show();
                                                         Log.d(TAG, "Lastly reg Id is "+RegID);
 
                                                         // now, update the document ib the database
@@ -260,13 +260,10 @@ public class MyDomain extends AppCompatActivity {
                                                         docR_2.set(userObj, SetOptions.merge());
                                                         Log.d(TAG, updatedMap.toString());
 
+                                                        if (activity.equals("Register")) {
+                                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                        }
 
-                                                    }
-                                                });
-                                                btnNext.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View view) {
-                                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                                     }
                                                 });
 
