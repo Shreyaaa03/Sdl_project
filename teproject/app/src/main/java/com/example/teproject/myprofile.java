@@ -1,7 +1,10 @@
 package com.example.teproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -20,6 +23,7 @@ public class myprofile extends AppCompatActivity {
     FirebaseAuth fAuth;
     String RegID;
     TextView fullname, emailid, phone, branch, rollno, role, groupid, linkedin, github, resume;
+    Button editProfBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,8 @@ public class myprofile extends AppCompatActivity {
         github = findViewById(R.id.github);
         resume = findViewById(R.id.resume);
 
+        editProfBtn = findViewById(R.id.editprofile);
+
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
@@ -53,6 +59,16 @@ public class myprofile extends AppCompatActivity {
 
             }
         });
+
+        editProfBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), editprofile.class));
+                finish();
+            }
+        });
+
+
 
     }
     void tp(int year){

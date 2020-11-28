@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".myprofile" />
+        <activity android:name=".editprofile" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
