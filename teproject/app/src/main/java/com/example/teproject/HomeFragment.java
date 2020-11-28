@@ -70,7 +70,9 @@ public class HomeFragment extends Fragment {
 
         getIDS();
 
-        if(!fireRole){
+        if(true){
+            mCreateGrpBtn.setEnabled(true);
+        } else{
             mCreateGrpBtn.setEnabled(false);
         }
 
