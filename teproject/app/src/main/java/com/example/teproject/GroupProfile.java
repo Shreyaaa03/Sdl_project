@@ -82,9 +82,9 @@ public class GroupProfile extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()) {
                     Log.d("check2", "check2 - exists");
-                    group_id.setText(GroupID+"\n");
-                    mentor_id.setText(documentSnapshot.getString("MentorID")+"\n");
-                    problem_statement.setText(documentSnapshot.getString("ProblemStatement")+"\n");
+                    group_id.setText(GroupID);
+                    mentor_id.setText(documentSnapshot.getString("MentorID"));
+                    problem_statement.setText(documentSnapshot.getString("ProblemStatement"));
 
                     Map<String, Object> map = documentSnapshot.getData();
                     for (Map.Entry<String, Object> entry : map.entrySet()) {
