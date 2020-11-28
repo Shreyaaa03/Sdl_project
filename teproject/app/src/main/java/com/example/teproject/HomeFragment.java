@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
         } else {
             datatosave2.put("MentorID", fireRegID);
         }
-        
+
             docRef.set(datatosave2, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -147,7 +147,6 @@ public class HomeFragment extends Fragment {
                     } else{
                         Log.d("TAG", "Member not added!");
                         Toast.makeText(getContext(), "You're in another team", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             });

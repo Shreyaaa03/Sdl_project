@@ -1,19 +1,29 @@
 package com.example.teproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Map;
+
+import static com.google.firebase.firestore.FieldValue.arrayRemove;
 
 
 public class GroupProfile extends AppCompatActivity {
@@ -22,7 +32,9 @@ public class GroupProfile extends AppCompatActivity {
     FirebaseAuth fAuth;
     String RegID, GroupID = "";
     TextView group_id, problem_statement, mentor_id, member1, techStack;
-
+    Button mLeaveGrpbtn;
+    DocumentReference docR, docR_2,docR_3;
+    private boolean mRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +48,12 @@ public class GroupProfile extends AppCompatActivity {
         mentor_id = findViewById(R.id.mentor_id);
         member1 = findViewById(R.id.member1);
         techStack = findViewById(R.id.tech_stack_id);
+        mLeaveGrpbtn = findViewById(R.id.leavegrpBtn);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        DocumentReference docR = fStore.document("year/"+year+"- "+(year+1)+"/IDS/"+fAuth.getCurrentUser().getUid());
+        docR = fStore.document("year/"+year+"- "+(year+1)+"/IDS/"+fAuth.getCurrentUser().getUid());
 
         docR.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -53,10 +66,54 @@ public class GroupProfile extends AppCompatActivity {
             }
         });
 
+        mLeaveGrpbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                removeFromGrp();
+            }
+        });
+
+    }
+
+    void removeFromGrp(){
+        Map<String, Object>datatosave = new HashMap<>();
+
+        if(mRole){
+            datatosave.put("Members", arrayRemove(RegID));
+        } else {
+            datatosave.put("MentorID", "");
+        }
+
+        docR_3.set(datatosave, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(GroupProfile.this, "You're no longer a part of the group", Toast.LENGTH_SHORT).show();
+                    removeGrpIDfromUser();
+                } else {
+                    Toast.makeText(GroupProfile.this, "Task failed", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+    }
+
+    void removeGrpIDfromUser(){
+        docR_2.update("GroupID", "").addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Log.d("TAG", "Removed group id from profile");
+                } else{
+                    Log.d("TAG", "FAiled to remove group id from profile");
+                }
+            }
+        });
     }
 
     void tp(int year){
-        DocumentReference docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+RegID);
+        docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+RegID);
         Log.d("check1", "check1 - doc");
         docR_2.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
 
@@ -65,6 +122,7 @@ public class GroupProfile extends AppCompatActivity {
                 if(documentSnapshot.exists()) {
                     Log.d("check2", "check2 - exists");
                     GroupID = documentSnapshot.getString("GroupID");
+                    mRole  = documentSnapshot.getBoolean("Role");
                     group(year, GroupID);
 
                 }
@@ -74,7 +132,7 @@ public class GroupProfile extends AppCompatActivity {
 
 
     void group(int year, String GroupID){
-        DocumentReference docR_3 = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
+        docR_3 = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
         Log.d("check1", "check1 - doc");
         docR_3.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
 
@@ -83,6 +141,7 @@ public class GroupProfile extends AppCompatActivity {
                 if(documentSnapshot.exists()) {
                     Log.d("check2", "check2 - exists");
                     group_id.setText(GroupID);
+                    mLeaveGrpbtn.setVisibility(View.VISIBLE);
                     mentor_id.setText(documentSnapshot.getString("MentorID"));
                     problem_statement.setText(documentSnapshot.getString("ProblemStatement"));
 
