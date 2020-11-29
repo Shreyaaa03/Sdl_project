@@ -75,7 +75,7 @@ public class MyDomain extends AppCompatActivity {
         if(activity.equals("Register")) {
             btnSave.setText("NEXT");
 
-        } else if(activity.equals("MainActivity")) {
+        } else if(activity.equals("joingroup")) {
             btnSave.setText("SAVE");
         } else {
             btnSave.setText("SAVE");
@@ -261,7 +261,7 @@ public class MyDomain extends AppCompatActivity {
                                                         Log.d(TAG, updatedMap.toString());
 
                                                         if (activity.equals("Register")) {
-                                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                            startActivity(new Intent(getApplicationContext(), joingroup.class));
                                                         }
 
                                                     }

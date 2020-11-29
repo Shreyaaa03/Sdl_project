@@ -1,15 +1,12 @@
 package com.example.teproject;
 
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +22,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +29,7 @@ import java.util.Random;
 
 import static com.google.firebase.firestore.FieldValue.arrayUnion;
 
-public class HomeFragment extends Fragment {
+public class joingroup extends AppCompatActivity {
 
     private TextView mCreateGroupText;
     private Button mCreateGrpBtn, mJoinGrpBtn, mSkipBtn;
@@ -47,19 +43,19 @@ public class HomeFragment extends Fragment {
     private DocumentReference docRef, docRef2;
     private boolean status, exist, fireRole;
 
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_joingroup);
 
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
 
-        mCreateGrpBtn = v.findViewById(R.id.creategroupbtn);
-        mJoinGrpBtn = v.findViewById(R.id.joingroupbtn);
-        mCreateGroupText = v.findViewById(R.id.groupCodetext);
-        mJoinGroupTxt = v.findViewById(R.id.joingrptext);
+        mCreateGrpBtn = findViewById(R.id.creategroupbtn);
+        mJoinGrpBtn = findViewById(R.id.joingroupbtn);
+        mCreateGroupText = findViewById(R.id.groupCodetext);
+        mJoinGroupTxt = findViewById(R.id.joingrptext);
+        mSkipBtn = findViewById(R.id.skipbtn);
         rand = new Random();
 
         fStore = FirebaseFirestore.getInstance();
@@ -81,37 +77,42 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    codeint = rand.nextInt((9999 - 100) + 1) + 10;
-                    code = Integer.toString(codeint);
-                    docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
-                    docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
+                codeint = rand.nextInt((9999 - 100) + 1) + 10;
+                code = Integer.toString(codeint);
+                docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
+                docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
 
-                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            DocumentSnapshot documentSnapshot = task.getResult();
-                            while(documentSnapshot.exists()){
-                                codeint = rand.nextInt((9999 - 100) + 1) + 10;
-                                code = Integer.toString(codeint);
-                            }
-                            if(documentSnapshot.exists() == false){
-                                mCreateGrpBtn.setEnabled(false);
-                                mJoinGrpBtn.setEnabled(false);
-                                Log.d("TAG", "Reg is: "+ fireRegID);
-
-                                mCreateGroupText.setVisibility(View.VISIBLE);
-                                mCreateGroupText.setText("Group code: "+code + "\n" +
-                                        "Share it with group members only!!");
-
-                                addGroupID();
-
-                            }
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        while(documentSnapshot.exists()){
+                            codeint = rand.nextInt((9999 - 100) + 1) + 10;
+                            code = Integer.toString(codeint);
                         }
-                    });
+                        if(documentSnapshot.exists() == false){
+                            mCreateGrpBtn.setEnabled(false);
+                            mJoinGrpBtn.setEnabled(false);
+                            Log.d("TAG", "Reg is: "+ fireRegID);
+
+                            mCreateGroupText.setVisibility(View.VISIBLE);
+                            mCreateGroupText.setText("Group code: "+code + "\n" +
+                                    "Share it with group members only!!");
+
+                            addGroupID();
+
+                        }
+                    }
+                });
             }
         });
 
-
+        mSkipBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
 
         mJoinGrpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,37 +125,34 @@ public class HomeFragment extends Fragment {
                 if(exist){
                     addGroupID();
                 }
-               else{
-                    Toast.makeText(getContext(), "Invalid group code", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
-
-        return v;
 
     }
 
     void addMemberToGrp(){
 
-        Map<String, Object>datatosave2 = new HashMap<>();
+        Map<String, Object> datatosave2 = new HashMap<>();
         if(fireRole){
             datatosave2.put("Members", arrayUnion(fireRegID));
         } else {
             datatosave2.put("MentorID", fireRegID);
         }
 
-            docRef.set(datatosave2, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Log.d("TAG", "Member successfully added");
-                        Toast.makeText(getContext(), "You're a member of team: "+code, Toast.LENGTH_SHORT).show();
-                    } else{
-                        Log.d("TAG", "Member not added!");
-                        Toast.makeText(getContext(), "You're in another team", Toast.LENGTH_SHORT).show();
-                    }
+        docRef.set(datatosave2, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Log.d("TAG", "Member successfully added");
+                    Toast.makeText(joingroup.this, "You're a member of team: "+code, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), joingroup.class));
+                } else{
+                    Log.d("TAG", "Member not added!");
+                    Toast.makeText(joingroup.this, "You're in another team", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
+        });
     }
 
     void addGroupID(){
@@ -199,6 +197,8 @@ public class HomeFragment extends Fragment {
                     exist = true;
                 } else{
                     exist = false;
+                    Toast.makeText(joingroup.this, "Invalid group code", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -241,3 +241,5 @@ public class HomeFragment extends Fragment {
         });
     }
 }
+
+

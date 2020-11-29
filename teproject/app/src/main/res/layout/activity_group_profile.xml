@@ -99,7 +99,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                        <Button
+                        <!-- Button
                             android:id="@+id/leavegrpBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                             app:cornerRadius="20sp"
                             app:iconTint="#FFFFFF"
                             app:strokeColor="#4DF453"
-                            app:strokeWidth="1dp" />
+                            app:strokeWidth="1dp" -->
 
 
                     </LinearLayout>

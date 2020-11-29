@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                        //    selectedFragment = new HomeFragment();
+                            selectedFragment = new ProjectsFragment();
                             break;
                         case R.id.nav_students:
                             selectedFragment = new ListUsersFragment("Students");
@@ -81,11 +82,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        }
     }
 
-    public void Logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(), Login.class));
-        finish();
-    }
+//    public void Logout(View view) {
+//        FirebaseAuth.getInstance().signOut();
+//        startActivity(new Intent(getApplicationContext(), Login.class));
+//        finish();
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -106,6 +107,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent.putExtra("activity", TAG);
                 startActivity(intent);
                 break;
+            case R.id.nav_joingroup:
+                startActivity(new Intent(getApplicationContext(), joingroup.class));
+                break;
+
         }
         return true;
     }
