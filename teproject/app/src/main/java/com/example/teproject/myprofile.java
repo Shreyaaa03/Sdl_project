@@ -81,8 +81,6 @@ public class myprofile extends AppCompatActivity {
             }
         });
 
-
-
     }
     void tp(int year){
         DocumentReference docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+RegID);
