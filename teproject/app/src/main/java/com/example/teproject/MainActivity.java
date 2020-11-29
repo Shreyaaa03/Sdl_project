@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             selectedFragment = new HomeFragment();
                             break;
                         case R.id.nav_students:
-                            selectedFragment = new StudentsFragment();
+                            selectedFragment = new ListUsersFragment("Students");
                             break;
                         case R.id.nav_teachers:
-                            selectedFragment = new TeachersFragment();
+                            selectedFragment = new ListUsersFragment("Teachers");
                             break;
                         case R.id.nav_projects:
                             selectedFragment = new ProjectsFragment();

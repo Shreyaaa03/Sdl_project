@@ -351,7 +351,22 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/edit_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="70dp"
+                    android:text="EDIT"
+                    android:textSize="20dp"
+                    style="@style/TextAppearance.AppCompat.Button"
+                    android:backgroundTint="@color/white">
+
+                </Button>
 
 
             </LinearLayout>

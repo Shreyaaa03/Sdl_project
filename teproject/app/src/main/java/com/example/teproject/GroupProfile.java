@@ -3,6 +3,7 @@ package com.example.teproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +33,7 @@ public class GroupProfile extends AppCompatActivity {
     FirebaseAuth fAuth;
     String RegID, GroupID = "";
     TextView group_id, problem_statement, mentor_id, member1, techStack;
-    Button mLeaveGrpbtn;
+    Button mLeaveGrpbtn, edit_group;
     DocumentReference docR, docR_2,docR_3;
     private boolean mRole;
 
@@ -49,6 +50,7 @@ public class GroupProfile extends AppCompatActivity {
         member1 = findViewById(R.id.member1);
         techStack = findViewById(R.id.tech_stack_id);
         mLeaveGrpbtn = findViewById(R.id.leavegrpBtn);
+        edit_group = findViewById(R.id.edit_group);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -71,6 +73,13 @@ public class GroupProfile extends AppCompatActivity {
             public void onClick(View v) {
 
                 removeFromGrp();
+            }
+        });
+
+        edit_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), EditGroup.class));
             }
         });
 
@@ -111,6 +120,7 @@ public class GroupProfile extends AppCompatActivity {
             }
         });
     }
+
 
     void tp(int year){
         docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+RegID);
