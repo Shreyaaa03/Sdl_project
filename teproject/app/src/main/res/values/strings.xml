@@ -14,7 +14,7 @@
     <string name="problem_statement">Problem Statement</string>
     <string name="members">Members</string>
     <string name="techstack">Tech Stack</string>
-    <string name="updateGroup">Update Profile</string>
+    <string name="updateGroup">Update Group Details</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="types">
         <item>Tech Stack</item>

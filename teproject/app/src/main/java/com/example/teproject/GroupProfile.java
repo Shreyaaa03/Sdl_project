@@ -185,7 +185,10 @@ public class GroupProfile extends AppCompatActivity {
                             String[] members = tech.split(", ", -2);
 
                             for (String a : members){
-                                techStack.append(a+"\n");
+                                if (!a.equals("null")){
+                                    techStack.append(a+"\n");
+                                }
+
                             }
 
                         }
