@@ -12,18 +12,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class myprofile extends AppCompatActivity {
+
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String RegID;
     TextView fullname, emailid, phone, branch, rollno, role, groupid, linkedin, github, resume;
     Button editProfBtn;
+    TextView domains;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +52,7 @@ public class myprofile extends AppCompatActivity {
         linkedin = findViewById(R.id.linkedin);
         github = findViewById(R.id.github);
         resume = findViewById(R.id.resume);
+        domains = findViewById(R.id.domaintext);
 
         editProfBtn = findViewById(R.id.editprofile);
 
@@ -55,6 +67,7 @@ public class myprofile extends AppCompatActivity {
                 if(documentSnapshot.exists()){
                     RegID = documentSnapshot.getString("RegID");
                     tp(year);
+
                 }
 
             }
@@ -96,6 +109,26 @@ public class myprofile extends AppCompatActivity {
                     linkedin.setText(documentSnapshot.getString("Linkedin"));
                     github.setText(documentSnapshot.getString("Github"));
                     resume.setText(documentSnapshot.getString("Resume"));
+
+                    Map<String , ArrayList<String>> subDomains = new HashMap<>();
+                    subDomains = (Map<String , ArrayList<String>>) documentSnapshot.get("Domains");
+                    String s = "";
+                    if(subDomains==null){
+                        Log.d("hiiiiiii","hi");
+                    }
+                    else {
+                        for (Map.Entry m: subDomains.entrySet()){
+                            String dname = m.getKey().toString();
+                            ArrayList<String> snames = (ArrayList<String>) m.getValue();
+                            s += dname + " : ";
+                            for(int i=0; i< snames.size(); i++ ){
+                                s += snames.get(i)+"   ";
+                            }
+                            s += "\n\n";
+                        }
+                        Log.d("hii", s);
+                        domains.setText(s);
+                    }
                 }
             }
         });

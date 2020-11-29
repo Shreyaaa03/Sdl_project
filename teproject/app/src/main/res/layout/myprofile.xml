@@ -96,13 +96,37 @@
         android:layout_height="match_parent"
         android:layout_marginTop="30dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/domains"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/blue_active"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="hello"
+                android:id="@+id/domaintext"></TextView>
+
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/domains"
             android:textSize="18sp"
             android:textColor="#000000"
             android:id="@+id/textview1"
             android:layout_marginLeft="15dp"
+
             android:text="Name: ">
 
         </TextView>
@@ -110,6 +134,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/domains"
             android:textSize="18sp"
             android:textColor="#000000"
             android:layout_toRightOf="@+id/textview1"
