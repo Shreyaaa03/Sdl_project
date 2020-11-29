@@ -13,7 +13,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Changes"
-            android:layout_gravity="center_horizontal"></Button>
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fadingEdge="vertical"></Button>
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +26,7 @@
             android:id="@+id/textview1"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="20dp"
-            android:text="Name: ">
+            android:text="Email ID: ">
 
         </TextView>
 
@@ -46,7 +48,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
 
-            android:text="Email ID: ">
+            android:text="Phone No. ID: ">
 
         </TextView>
 
@@ -68,7 +70,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
 
-            android:text="Phone no.: ">
+            android:text="Linkedin link.: ">
 
         </TextView>
 
@@ -90,7 +92,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
 
-            android:text="Branch: ">
+            android:text="Github Link: ">
 
         </TextView>
 
@@ -112,7 +114,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
 
-            android:text="Roll No. : ">
+            android:text="Resume Link. : ">
 
         </TextView>
 
@@ -123,6 +125,7 @@
             android:layout_below="@id/edittext4"
             android:id="@+id/edittext5"
             ></EditText>
+
 
 
     </RelativeLayout>
