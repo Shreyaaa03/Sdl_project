@@ -36,6 +36,7 @@ public class GroupProfile extends AppCompatActivity {
     Button mLeaveGrpbtn, edit_group;
     DocumentReference docR, docR_2,docR_3;
     private boolean mRole;
+    private int year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +44,14 @@ public class GroupProfile extends AppCompatActivity {
         setContentView(R.layout.activity_group_profile);
 
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
+        year = calendar.get(Calendar.YEAR);
+
         group_id = findViewById(R.id.groupid);
         problem_statement = findViewById(R.id.problem_statement_id);
         mentor_id = findViewById(R.id.mentor_id);
         member1 = findViewById(R.id.member1);
         techStack = findViewById(R.id.tech_stack_id);
-        mLeaveGrpbtn = findViewById(R.id.leavegrpBtn);
+   //     mLeaveGrpbtn = findViewById(R.id.leavegrpBtn);
         edit_group = findViewById(R.id.edit_group);
 
         fAuth = FirebaseAuth.getInstance();
@@ -64,17 +66,20 @@ public class GroupProfile extends AppCompatActivity {
                     RegID = documentSnapshot.getString("RegID");
                     tp(year);
                 }
-
             }
         });
 
-        mLeaveGrpbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        mLeaveGrpbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Log.d("TAG", "RegID: "+ RegID);
+//                Log.d("TAG", "YEar: "+year);
+//                Log.d("TAG", "GroupID: "+GroupID);
+//             //   removeFromGrp();
+//            }
+//        });
 
-                removeFromGrp();
-            }
-        });
 
         edit_group.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,58 +88,62 @@ public class GroupProfile extends AppCompatActivity {
             }
         });
 
+
     }
-
-    void removeFromGrp(){
-        Map<String, Object>datatosave = new HashMap<>();
-
-        if(mRole){
-            datatosave.put("Members", arrayRemove(RegID));
-        } else {
-            datatosave.put("MentorID", "");
-        }
-
-        docR_3.set(datatosave, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(GroupProfile.this, "You're no longer a part of the group", Toast.LENGTH_SHORT).show();
-                    removeGrpIDfromUser();
-                } else {
-                    Toast.makeText(GroupProfile.this, "Task failed", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-    }
-
-    void removeGrpIDfromUser(){
-        docR_2.update("GroupID", "").addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Log.d("TAG", "Removed group id from profile");
-                } else{
-                    Log.d("TAG", "FAiled to remove group id from profile");
-                }
-            }
-        });
-    }
+//
+//    void removeFromGrp(){
+//        Map<String, Object>datatosave = new HashMap<>();
+//
+//        if(mRole){
+//            datatosave.put("Members", arrayRemove(RegID));
+//        } else {
+//            datatosave.put("MentorID", "");
+//        }
+//
+//        docR_3 = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
+//        docR_3.set(datatosave, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if(task.isSuccessful()){
+//                    Toast.makeText(GroupProfile.this, "You're no longer a part of the group", Toast.LENGTH_SHORT).show();
+//                    removeGrpIDfromUser();
+//                } else {
+//                    Toast.makeText(GroupProfile.this, "Task failed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
+//
+//    void removeGrpIDfromUser(){
+//        docR_2.update("GroupID", "N.A.").addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if(task.isSuccessful()){
+//                    Log.d("TAG", "Removed group id from profile");
+//                } else{
+//                    Log.d("TAG", "Failed to remove group id from profile");
+//                }
+//            }
+//        });
+//    }
 
 
     void tp(int year){
         docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+RegID);
-        Log.d("check1", "check1 - doc");
+        Log.d("check1", " in tp check1 - doc");
         docR_2.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
 
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()) {
-                    Log.d("check2", "check2 - exists");
+                    Log.d("check2", " in tp check2 - exists");
                     GroupID = documentSnapshot.getString("GroupID");
                     mRole  = documentSnapshot.getBoolean("Role");
-                    group(year, GroupID);
+                    Log.d("TAG", "GroupID"+GroupID);
 
+                    if(!GroupID.isEmpty()){
+                        group(year, GroupID);
+                    }
                 }
             }
         });
@@ -143,15 +152,15 @@ public class GroupProfile extends AppCompatActivity {
 
     void group(int year, String GroupID){
         docR_3 = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
-        Log.d("check1", "check1 - doc");
+        Log.d("check1", "in group check1 - doc");
         docR_3.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
 
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()) {
-                    Log.d("check2", "check2 - exists");
+                    Log.d("check2", " in group check2 - exists");
                     group_id.setText(GroupID);
-                    mLeaveGrpbtn.setVisibility(View.VISIBLE);
+            //        mLeaveGrpbtn.setVisibility(View.VISIBLE);
                     mentor_id.setText(documentSnapshot.getString("MentorID"));
                     problem_statement.setText(documentSnapshot.getString("ProblemStatement"));
 
@@ -165,7 +174,6 @@ public class GroupProfile extends AppCompatActivity {
                             for (String a : members){
                                  member1.append(a+"\n");
                             }
-
                         }
                     }
 

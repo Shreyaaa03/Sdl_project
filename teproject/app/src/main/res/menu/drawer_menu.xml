@@ -13,11 +13,16 @@
             android:title="My Group" />
         <item
             android:id="@+id/nav_domain"
+            android:icon="@drawable/ic_domains"
             android:title="My Domains" />
         <item
+            android:id="@+id/nav_joingroup"
+            android:icon="@drawable/ic_baseline_group_add_24"
+            android:title="Join/Create Group"/>
+        <!--item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
-            android:title="Settings" />
+            android:title="Settings" /-->
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"

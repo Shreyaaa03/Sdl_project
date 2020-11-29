@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.teproject">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Teproject">
+        <activity android:name=".joingroup"></activity>
         <activity android:name=".EditGroup" />
         <activity android:name=".MyDomain" />
         <activity android:name=".GroupProfile" />
@@ -35,5 +34,7 @@
         <activity android:name=".myprofile" />
         <activity android:name=".editprofile" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
