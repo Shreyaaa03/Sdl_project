@@ -1,10 +1,12 @@
 package com.example.teproject;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,12 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.util.Calendar;
 
 public class ListUsersFragment extends Fragment {
+    private static final String TAG = "ListUsersFragment";
 
     private View studentsFragmentsView;
     private RecyclerView recyclerView;
@@ -28,6 +32,8 @@ public class ListUsersFragment extends Fragment {
     private int year;
     private FirebaseFirestore db;
     private CollectionReference userdomainsRef;
+
+    private ListUsersAdapter adapter;
 
     String tabName;
     public ListUsersFragment(String tabName) {
@@ -62,40 +68,18 @@ public class ListUsersFragment extends Fragment {
                 .setQuery(query, UserOverview.class)
                 .build();
 
-        FirestoreRecyclerAdapter<UserOverview, UserHolder> adapter = new FirestoreRecyclerAdapter<UserOverview, UserHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull UserOverview model) {
-                // holder.itemView.component for accessing
-                // what we have to put in each layout in our CardView
-
-                holder.txtName.setText(model.getName());
-                holder.txtBranch.setText(model.getBranch());
-                holder.txtEmail.setText(model.getEmail());
-
-            }
-
-            @NonNull
-            @Override
-            public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.person_list_item, parent, false);
-                UserHolder holder = new UserHolder(view);
-                return holder;
-            }
-        };
+        adapter = new ListUsersAdapter(options);
 
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ListUsersAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                UserOverview userOverview = documentSnapshot.toObject(UserOverview.class);
+                String name = userOverview.getName();
+                Toast.makeText(getContext(), "Position: "+position+" Name: "+name, Toast.LENGTH_SHORT).show();
+            }
+        });
         adapter.startListening();
-    }
-
-    public static class UserHolder extends RecyclerView.ViewHolder {
-
-        TextView txtName, txtBranch, txtEmail;
-        public UserHolder(@NonNull View itemView) {
-            super(itemView);
-            txtName = itemView.findViewById(R.id.usr_full_name);
-            txtBranch = itemView.findViewById(R.id.usr_branch_name);
-            txtEmail = itemView.findViewById(R.id.usr_email);
-        }
     }
 
 }
