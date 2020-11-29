@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -67,14 +68,7 @@ public class joingroup extends AppCompatActivity {
         docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
 
         getIDS();
-
-
-        if(fireRole){
-            mCreateGrpBtn.setEnabled(true);
-        } else{
-            mCreateGrpBtn.setEnabled(false);
-        }
-      //  checkforbtnenable();
+        
 
         mCreateGrpBtn. setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,15 +115,15 @@ public class joingroup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 code = mJoinGroupTxt.getText().toString().trim();
+                if(TextUtils.isEmpty(code)){
+                    mJoinGroupTxt.setError("Enter code");
+                }
                 docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
                 docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
                 Log.d("TAG", "code is: "+ code);
                 checkIfgroupExists();
-
-
             }
         });
-
     }
 
 //    void checkforbtnenable(){
@@ -172,6 +166,7 @@ public class joingroup extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else{
                     Log.d("TAG", "Member not added!");
+                    mJoinGrpBtn.setEnabled(false);
                     Toast.makeText(joingroup.this, "You're in another team", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -204,6 +199,7 @@ public class joingroup extends AppCompatActivity {
                         addMemberToGrp();
                     } else{
                         status = false;
+                        mJoinGrpBtn.setEnabled(false);
                         Log.d("TAG", "Already a group member!");
                         Toast.makeText(joingroup.this, "Already a member", Toast.LENGTH_SHORT).show();
                     }
@@ -223,7 +219,7 @@ public class joingroup extends AppCompatActivity {
                         addGroupID();
                 } else{
                     exist = false;
-                    Toast.makeText(joingroup.this, "Invalid group code", Toast.LENGTH_SHORT).show();
+                    mJoinGroupTxt.setError("Invalid code");
                     mCreateGrpBtn.setEnabled(true);
                 }
             }
@@ -240,6 +236,11 @@ public class joingroup extends AppCompatActivity {
                 if (document.exists()) {
                     fireRegID = document.getString("RegistrationID");
                     fireRole = document.getBoolean("Role");
+                    if(fireRole){
+                        mCreateGrpBtn.setEnabled(true);
+                    } else {
+                        mCreateGrpBtn.setEnabled(false);
+                    }
                     Log.d("TAG", "data => " + document.getData());
                     Log.d("TAG", "ROle is: "+ fireRole);
                 } else {

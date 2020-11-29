@@ -12,12 +12,13 @@
         android:background="#7C60E4"
         android:backgroundTint="#7C60E4"
         android:text="Create a group"
+        app:cornerRadius="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintVertical_bias="0.35" />
 
     <Button
         android:id="@+id/joingroupbtn"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Join a group"
         android:textAlignment="center"
+        app:cornerRadius="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -32,26 +34,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.765" />
 
-    <TextView
-        android:id="@+id/groupCodetext"
-        android:layout_width="360dp"
+    <Button
+        android:id="@+id/skipbtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="14sp"
-        android:text="Group code"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
+        android:text="Skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintVertical_bias="0.929" />
 
     <EditText
         android:id="@+id/joingrptext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="39dp"
         android:ems="10"
         android:hint="Enter Group Code"
         android:inputType="textPersonName"
@@ -67,14 +65,13 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
         android:text="OR"
         app:layout_constraintBottom_toTopOf="@+id/joingrptext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupCodetext"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925" />
 
     <TextView
         android:id="@+id/textView2"
@@ -88,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <TextView
         android:id="@+id/textView6"
@@ -103,17 +100,21 @@
         app:layout_constraintTop_toBottomOf="@+id/joingroupbtn"
         app:layout_constraintVertical_bias="0.546" />
 
-    <Button
-        android:id="@+id/skipbtn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/groupCodetext"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:text="Skip"
+        android:lineSpacingExtra="14sp"
+        android:text="Group code"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        app:layout_constraintVertical_bias="0.456" />
 
     <TextView
         android:id="@+id/textView7"
