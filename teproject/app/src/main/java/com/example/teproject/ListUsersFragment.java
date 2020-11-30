@@ -1,6 +1,8 @@
 package com.example.teproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +22,19 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
 public class ListUsersFragment extends Fragment {
     private static final String TAG = "ListUsersFragment";
+    private static final String CALLING_TAG = "ListUserFragment";
 
     private View studentsFragmentsView;
     private RecyclerView recyclerView;
+    private TextView txt_title;
 
     private int year;
     private FirebaseFirestore db;
@@ -60,10 +67,13 @@ public class ListUsersFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Query query;
+        txt_title = studentsFragmentsView.findViewById(R.id.list_heading);
         if(tabName.equals("Students")) {
             query = userdomainsRef.whereEqualTo("Role", true);
-        } else
+        } else {
             query = userdomainsRef.whereEqualTo("Role", false);
+            txt_title.setText("Find your mentors");
+        }
         FirestoreRecyclerOptions<UserOverview> options = new FirestoreRecyclerOptions.Builder<UserOverview>()
                 .setQuery(query, UserOverview.class)
                 .build();
@@ -76,7 +86,18 @@ public class ListUsersFragment extends Fragment {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 UserOverview userOverview = documentSnapshot.toObject(UserOverview.class);
                 String name = userOverview.getName();
-                Toast.makeText(getContext(), "Position: "+position+" Name: "+name, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Position: "+position+" Name: "+name, Toast.LENGTH_SHORT).show();
+                Intent profileIntent = new Intent(getContext(), myprofile.class);
+
+                // passing this to identify caller activity/fragment
+                profileIntent.putExtra("caller", CALLING_TAG);
+
+                // serialising the data because custom objects cannot be directly passed!
+                Gson gson = new Gson();
+                String currUser = gson.toJson(userOverview);
+                profileIntent.putExtra("userOverview", currUser);
+                startActivity(profileIntent);
+
             }
         });
         adapter.startListening();

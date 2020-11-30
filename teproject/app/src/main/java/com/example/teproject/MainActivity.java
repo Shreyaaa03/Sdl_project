@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navvw;
     BottomNavigationView bottomNav;
     private static final String TAG = "MainActivity";
+    private static final String CALLING_TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
             case R.id.nav_profile:
-                startActivity(new Intent(getApplicationContext(), myprofile.class));
+                Intent profileIntent = new Intent(getApplicationContext(), myprofile.class);
+                profileIntent.putExtra("caller", CALLING_TAG);
+                startActivity(profileIntent);
                 break;
             case R.id.nav_group_profile:
                 startActivity(new Intent(getApplicationContext(), GroupProfile.class));

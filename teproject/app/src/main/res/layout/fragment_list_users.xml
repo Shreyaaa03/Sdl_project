@@ -5,11 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/list_heading"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Find your colleagues"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:paddingVertical="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/students_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
         />
 
 
