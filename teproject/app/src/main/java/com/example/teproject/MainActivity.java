@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.nav_home:
-                        //    selectedFragment = new HomeFragment();
-                            selectedFragment = new ProjectsFragment();
+                            selectedFragment = new HomeFragment();
                             break;
                         case R.id.nav_students:
                             selectedFragment = new ListUsersFragment("Students");
@@ -103,7 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(profileIntent);
                 break;
             case R.id.nav_group_profile:
-                startActivity(new Intent(getApplicationContext(), GroupProfile.class));
+                Intent groupIntent = new Intent(getApplicationContext(), GroupProfile.class);
+                groupIntent.putExtra("activity", TAG);
+                startActivity(groupIntent);
                 break;
             case R.id.nav_domain:
                 Intent intent = new Intent(getApplicationContext(), MyDomain.class);

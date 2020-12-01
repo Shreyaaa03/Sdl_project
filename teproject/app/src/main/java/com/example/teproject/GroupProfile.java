@@ -19,6 +19,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -57,17 +58,60 @@ public class GroupProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        docR = fStore.document("year/"+year+"- "+(year+1)+"/IDS/"+fAuth.getCurrentUser().getUid());
+        // getting the caller activity/fragment
+        Intent groupIntent = getIntent();
+        String caller = groupIntent.getStringExtra("activity");
+        Log.d("Caller", caller);
 
-        docR.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    RegID = documentSnapshot.getString("RegID");
-                    tp(year);
+        if (caller.equals("MainActivity")) {
+            docR = fStore.document("year/"+year+"- "+(year+1)+"/IDS/"+fAuth.getCurrentUser().getUid());
+
+            docR.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.exists()){
+                        RegID = documentSnapshot.getString("RegID");
+                        tp(year);
+                    }
+                }
+            });
+        } else{
+            // extract other details from intent
+            Gson gson = new Gson();
+            GroupsOverview groupsOverview = gson.fromJson(groupIntent.getStringExtra("groupsOverView"), GroupsOverview.class);
+            String groupId = groupIntent.getStringExtra("groupId");
+
+            // hide the edit button
+            edit_group.setVisibility(View.GONE);
+            // now setting the values of components:
+            group_id.setText(groupId);
+            if(groupsOverview.getMentorID() != null)
+                mentor_id.setText(groupsOverview.getMentorID());
+            if(groupsOverview.getProblemStatement() != null)
+                problem_statement.setText(groupsOverview.getProblemStatement());
+            if(groupsOverview.getMembers() != null) {
+                String mem = (groupsOverview.getMembers().toString());
+                mem = mem.substring(1, mem.length()-1);
+                String[] members = mem.split(", ", -2);
+
+                for (String a : members){
+                    member1.append(a+"\n");
                 }
             }
-        });
+            if(groupsOverview.getTechStack() != null) {
+                String tech = (groupsOverview.getTechStack().toString());
+                tech = tech.substring(1, tech.length()-1);
+                String[] members = tech.split(", ", -2);
+
+                for (String a : members){
+                    if (!a.equals("null")){
+                        techStack.append(a+"\n");
+                    }
+
+                }
+            }
+        }
+
 
 //        mLeaveGrpbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
