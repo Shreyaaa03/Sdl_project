@@ -38,7 +38,7 @@ public class joingroup extends AppCompatActivity {
     private EditText mJoinGroupTxt;
     private int year, codeint;
     final ArrayList<Integer> codeArr = new ArrayList<>();
-    private String fireRegID, userUid, code;
+    private String fireRegID, userUid, code, fireGrp;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     private DocumentReference docRef, docRef2;
@@ -65,20 +65,17 @@ public class joingroup extends AppCompatActivity {
         userUid =  user.getUid();
 
         String userEmail = user.getEmail();
-        docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
 
         getIDS();
-        
+        docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
+
 
         mCreateGrpBtn. setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 codeint = rand.nextInt((9999 - 100) + 1) + 10;
                 code = Integer.toString(codeint);
                 docRef = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+code);
-
-
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -86,8 +83,9 @@ public class joingroup extends AppCompatActivity {
                         while(documentSnapshot.exists()){
                             codeint = rand.nextInt((9999 - 100) + 1) + 10;
                             code = Integer.toString(codeint);
+                            Log.d("TAG", "Code: "+ code);
                         }
-                        if(documentSnapshot.exists() == false){
+                        if(!documentSnapshot.exists()){
                             mCreateGrpBtn.setEnabled(false);
                             mJoinGrpBtn.setEnabled(false);
                             Log.d("TAG", "Reg is: "+ fireRegID);
@@ -95,9 +93,8 @@ public class joingroup extends AppCompatActivity {
                             mCreateGroupText.setVisibility(View.VISIBLE);
                             mCreateGroupText.setText("Group code: "+code + "\n" +
                                     "Share it with group members only!!");
-
+                            Log.d("TAG", "Code "+ code);
                             addGroupID();
-
                         }
                     }
                 });
@@ -164,6 +161,7 @@ public class joingroup extends AppCompatActivity {
                     Log.d("TAG", "Member successfully added");
                     Toast.makeText(joingroup.this, "You're a member of team: "+code, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    mSkipBtn.setText("Next");
                 } else{
                     Log.d("TAG", "Member not added!");
                     mJoinGrpBtn.setEnabled(false);
@@ -175,28 +173,32 @@ public class joingroup extends AppCompatActivity {
 
     void addGroupID(){
 
+        docRef2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+fireRegID);
         docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
                 if(document.exists()){
+                    Log.d("TAG", "Exissttsssss");
                     String groupid = document.getString("GroupID");
                     if(groupid.equals("N.A.")){
                         status = true;
                         Map<String, Object> datatosave = new HashMap<>();
                         datatosave.put("GroupID", code);
+                        Log.d("TAG","groupid: "+ code);
 
                         docRef2.update(datatosave).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     Log.d("Hooray", "GroupID added successfully");
+                                    addMemberToGrp();
                                 }else{
                                     Log.d("Error", "There was an error!");
                                 }
                             }
                         });
-                        addMemberToGrp();
+
                     } else{
                         status = false;
                         mJoinGrpBtn.setEnabled(false);
@@ -236,11 +238,20 @@ public class joingroup extends AppCompatActivity {
                 if (document.exists()) {
                     fireRegID = document.getString("RegistrationID");
                     fireRole = document.getBoolean("Role");
+                    fireGrp = document.getString("GroupID");
                     if(fireRole){
                         mCreateGrpBtn.setEnabled(true);
                     } else {
                         mCreateGrpBtn.setEnabled(false);
                     }
+                    if(fireGrp.equals("N.A.")){
+                        mCreateGrpBtn.setEnabled(true);
+                        mJoinGrpBtn.setEnabled(true);
+                    } else {
+                        mCreateGrpBtn.setEnabled(false);
+                        mJoinGrpBtn.setEnabled(false);
+                    }
+
                     Log.d("TAG", "data => " + document.getData());
                     Log.d("TAG", "ROle is: "+ fireRole);
                 } else {
