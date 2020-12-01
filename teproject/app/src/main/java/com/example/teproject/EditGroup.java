@@ -80,18 +80,20 @@ public class EditGroup extends AppCompatActivity {
 
     }
 
+    /*
+
     public void getDetails(){
         docR = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
-        docR.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
-
+        docR.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    problem_statement = documentSnapshot.getString("ProblemStatement");
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    problem_statement = document.getString("ProblemStatement");
                     if(!problem_statement.isEmpty()){
                         text.setText(problem_statement);
                     }
-                    Map<String, Object> map1 = documentSnapshot.getData();
+                    Map<String, Object> map1 = document.getData();
                     for (Map.Entry<String, Object> entry : map1.entrySet()) {
                         if (entry.getKey().equals("TechStack")) {
                             String tech = (entry.getValue().toString());
@@ -123,6 +125,8 @@ public class EditGroup extends AppCompatActivity {
     }
 
 
+     */
+
 
     public void getGroupID(){
         docR2 = fStore.document("year/" + year + "- " + (year + 1) + "/Users/" + RegID);
@@ -133,7 +137,7 @@ public class EditGroup extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     GroupID = documentSnapshot.getString("GroupID");
                     Log.d("c", GroupID);
-                    getDetails();
+                   // getDetails();
 
                 }
             }
@@ -194,6 +198,7 @@ public class EditGroup extends AppCompatActivity {
                 }
             }
         });
+
 
 
     }
