@@ -68,8 +68,10 @@ public class Register extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
 
         if(fAuth.getCurrentUser() != null){
-            // user already loggen in...Directly send to main screen
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            // user already logged in...Directly send to main screen
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
             finish();
         }
 
@@ -98,7 +100,9 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // user has already an account...Start login activity
-                startActivity(new Intent(getApplicationContext(), Login.class));
+                Intent i = new Intent(getApplicationContext(), Login.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
                 finish();
             }
         });
@@ -145,6 +149,7 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this, "Account created", Toast.LENGTH_SHORT).show();
                             // new account created!
                             Intent intent = new Intent(getApplicationContext(), MyDomain.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             intent.putExtra("activity", TAG);
                             startActivity(intent);
 

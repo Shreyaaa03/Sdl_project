@@ -86,7 +86,9 @@ public class editprofile extends AppCompatActivity {
                 docR_2.set(datatosave, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        startActivity(new Intent(getApplicationContext(), myprofile.class));
+                        Intent profileIntent = new Intent(getApplicationContext(), myprofile.class);
+                        profileIntent.putExtra("caller", "MainActivity");
+                        startActivity(profileIntent);
                     }
                 });
 

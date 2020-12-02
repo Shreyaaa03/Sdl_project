@@ -32,7 +32,12 @@ public class ListGroupsAdapter extends FirestoreRecyclerAdapter<GroupsOverview, 
 
         holder.groupId.setText("Group Id: "+currGroupId);
         if (model.getProblemStatement() != null) {
-            holder.problemStatement.setText("Problem Statement: "+model.getProblemStatement());
+            String probStatement = model.getProblemStatement();
+            if(probStatement.length() > 22) {
+                probStatement = probStatement.substring(0, 21);
+                probStatement += "...";
+            }
+            holder.problemStatement.setText("Problem Statement: "+probStatement);
         }
     }
 
