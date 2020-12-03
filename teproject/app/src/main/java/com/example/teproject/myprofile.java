@@ -1,15 +1,22 @@
 package com.example.teproject;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +27,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,12 +41,14 @@ import java.util.Map;
 public class myprofile extends AppCompatActivity {
     private static final String TAG = "myprofile";
 
+    StorageReference mStorageReference;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String RegID;
     TextView fullname, emailid, phone, branch, rollno, role, groupid, linkedin, github, resume, upload;
     Button editProfBtn;
     TextView domains;
+    ImageView profile_pic;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,12 +70,13 @@ public class myprofile extends AppCompatActivity {
         domains = findViewById(R.id.domaintext);
 
         upload = findViewById(R.id.upload);
+        profile_pic = findViewById(R.id.profilepicture);
 
         editProfBtn = findViewById(R.id.editprofile);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-
+        mStorageReference = FirebaseStorage.getInstance().getReference();
 
         // checking who has called this activity
         Intent intent = getIntent();
@@ -77,9 +91,7 @@ public class myprofile extends AppCompatActivity {
                     if(documentSnapshot.exists()){
                         RegID = documentSnapshot.getString("RegID");
                         tp(year);
-
                     }
-
                 }
             });
 
@@ -88,6 +100,22 @@ public class myprofile extends AppCompatActivity {
                 public void onClick(View view) {
                     startActivity(new Intent(getApplicationContext(), editprofile.class));
                     finish();
+                }
+            });
+
+            StorageReference fileref = mStorageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+            fileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(profile_pic);
+                }
+            });
+
+            upload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(openGallery,1000);
                 }
             });
 
@@ -144,6 +172,39 @@ public class myprofile extends AppCompatActivity {
 
         }
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            if(resultCode == Activity.RESULT_OK){
+                Uri imageuri = data.getData();
+                profile_pic.setImageURI(imageuri);
+
+                uploadimagetofirebase(imageuri);
+            }
+        }
+    }
+
+    private void uploadimagetofirebase(Uri imageuri) {
+        final StorageReference fileref = mStorageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        fileref.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(myprofile.this,"Image uploaded",Toast.LENGTH_SHORT).show();
+                fileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profile_pic);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(myprofile.this,"Image could not be uploaded",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     void tp(int year){
         DocumentReference docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+RegID);
