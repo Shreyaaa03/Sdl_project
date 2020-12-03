@@ -116,7 +116,7 @@
             android:layout_marginLeft="15dp"
             android:textStyle="bold"
 
-            android:text="Name: ">
+            android:text="Name             ">
 
         </TextView>
 
@@ -142,7 +142,7 @@
             android:layout_below="@id/textview1"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Email ID: ">
+            android:text="Email ID         ">
 
         </TextView>
 
@@ -170,7 +170,7 @@
             android:layout_below="@id/textview3"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Phone no.: ">
+            android:text="Phone no.      ">
 
         </TextView>
 
@@ -198,7 +198,7 @@
             android:layout_below="@id/textview4"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Branch: ">
+            android:text="Branch           ">
 
         </TextView>
 
@@ -225,7 +225,7 @@
             android:layout_below="@id/textview5"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Roll no.: ">
+            android:text="Roll no.          ">
 
         </TextView>
 
@@ -252,7 +252,7 @@
             android:layout_below="@id/textview6"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Role: ">
+            android:text="Role               ">
 
         </TextView>
 
@@ -278,7 +278,7 @@
             android:layout_below="@id/textview7"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Group id: ">
+            android:text="Group id         ">
 
         </TextView>
 
@@ -304,7 +304,7 @@
             android:layout_below="@id/textview8"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Linkedin link: ">
+            android:text="Linkedin link  ">
 
         </TextView>
 
@@ -330,7 +330,7 @@
             android:layout_below="@id/textview9"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Github link: ">
+            android:text="Github link      ">
 
         </TextView>
 
@@ -357,7 +357,7 @@
             android:layout_below="@id/textview10"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:text="Resume link: ">
+            android:text="Resume link   ">
 
         </TextView>
 
