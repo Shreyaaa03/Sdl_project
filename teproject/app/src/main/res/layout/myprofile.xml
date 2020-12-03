@@ -101,7 +101,7 @@
                 android:layout_margin="15dp"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:text="hello"
+                android:text="Loading Skillset ..."
                 android:id="@+id/domaintext"></TextView>
 
         </androidx.cardview.widget.CardView>
