@@ -128,10 +128,13 @@ public class myprofile extends AppCompatActivity {
                     String dname = m.getKey().toString();
                     ArrayList<String> snames = (ArrayList<String>) m.getValue();
                     s += dname + " : ";
-                    for(int i=0; i< snames.size(); i++ ){
+                    int i=0;
+                    for(i=0; i< snames.size(); i++ ){
                         s += snames.get(i)+"   ";
                     }
-                    s += "\n\n";
+                    if(i!=snames.size()-1) {
+                        s += "\n\n";
+                    }
                 }
                 Log.d("hii", s);
                 domains.setText(s);

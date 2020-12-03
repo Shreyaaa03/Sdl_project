@@ -15,17 +15,6 @@
         android:layout_height="300dp"
         android:background="#000000">
 
-        <ImageButton
-            android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/myprofile_back_arrow">
-
-        </ImageButton>
-
         <Button
             android:id="@+id/editprofile"
             android:layout_width="wrap_content"
@@ -103,18 +92,18 @@
             android:layout_height="wrap_content"
             android:id="@+id/domains"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            app:cardCornerRadius="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:cardCornerRadius="20dp"
             app:cardBackgroundColor="@color/black"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="15dp"
                 android:textSize="20sp"
-                android:textColor="#ffa500"
+                android:textColor="@color/white"
                 android:text="hello"
                 android:id="@+id/domaintext"></TextView>
 
@@ -128,6 +117,7 @@
             android:textColor="@color/white"
             android:id="@+id/textview1"
             android:layout_marginLeft="15dp"
+            android:textStyle="bold"
 
             android:text="Name: ">
 
@@ -154,6 +144,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview1"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Email ID: ">
 
         </TextView>
@@ -181,6 +172,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview3"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Phone no.: ">
 
         </TextView>
@@ -208,6 +200,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview4"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Branch: ">
 
         </TextView>
@@ -234,6 +227,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview5"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Roll no.: ">
 
         </TextView>
@@ -260,6 +254,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview6"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Role: ">
 
         </TextView>
@@ -285,6 +280,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview7"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Group id: ">
 
         </TextView>
@@ -310,6 +306,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview8"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Linkedin link: ">
 
         </TextView>
@@ -335,6 +332,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview9"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Github link: ">
 
         </TextView>
@@ -361,6 +359,7 @@
             android:layout_marginLeft="15dp"
             android:layout_below="@id/textview10"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Resume link: ">
 
         </TextView>
