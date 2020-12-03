@@ -3,10 +3,13 @@ package com.example.teproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ public class ListUsersFragment extends Fragment {
     private int year;
     private FirebaseFirestore db;
     private CollectionReference userdomainsRef;
+    private EditText txtSearch;
 
     private ListUsersAdapter adapter;
 
@@ -57,6 +61,7 @@ public class ListUsersFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         userdomainsRef = userdomainsRef = db.collection("year/"+year+"- "+(year+1)+"/Users");
 
+        txtSearch = studentsFragmentsView.findViewById(R.id.txt_search_users);
 
         recyclerView = studentsFragmentsView.findViewById(R.id.students_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -101,6 +106,54 @@ public class ListUsersFragment extends Fragment {
             }
         });
         adapter.startListening();
+
+        txtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+    }
+    private void filter(String toString) {
+        Query query = userdomainsRef;
+        if(tabName.equals("Students")) {
+            query = userdomainsRef.whereEqualTo("Role", true);
+        } else {
+            query = userdomainsRef.whereEqualTo("Role", false);
+            txt_title.setText("Find your mentors");
+        }
+        FirestoreRecyclerOptions<UserOverview> options = new FirestoreRecyclerOptions.Builder<UserOverview>()
+                .setQuery(query, UserOverview.class)
+                .build();
+
+        Query q2;
+        if(tabName.equals("Students")) {
+            q2 = userdomainsRef.whereEqualTo("Role", true)
+                    .whereGreaterThanOrEqualTo("Name", toString)
+                    .whereLessThanOrEqualTo("Name", toString+"\uf8ff");
+        } else {
+            q2 = userdomainsRef.whereEqualTo("Role", false)
+                    .whereGreaterThanOrEqualTo("Name", toString)
+                    .whereLessThanOrEqualTo("Name", toString+"\uf8ff");
+            txt_title.setText("Find your mentors");
+        }
+        FirestoreRecyclerOptions<UserOverview> options2 = new FirestoreRecyclerOptions.Builder<UserOverview>()
+                .setQuery(q2, UserOverview.class)
+                .build();
+        if(toString.equals("")) {
+            adapter.updateOptions(options);
+        } else
+            adapter.updateOptions(options2);
     }
 
 }

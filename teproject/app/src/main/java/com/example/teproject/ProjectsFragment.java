@@ -1,6 +1,8 @@
 package com.example.teproject;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -54,7 +57,6 @@ public class ProjectsFragment extends Fragment {
         year = calendar.get(Calendar.YEAR);
         db = FirebaseFirestore.getInstance();
         groupsRef = db.collection("year/"+year+"- "+(year+1)+"/Groups");
-
         recyclerView = thisView.findViewById(R.id.groups_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return thisView;
@@ -92,8 +94,6 @@ public class ProjectsFragment extends Fragment {
         adapter.startListening();
 
     }
-
-
 
 //    // This event is triggered soon after onCreateView().
 //    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.

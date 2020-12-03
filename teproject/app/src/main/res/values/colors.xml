@@ -10,4 +10,10 @@
     <color name="faded_gray">#BDC4C6</color>
     <color name="blue_active">#4285F4</color>
 
+<!--    Final app color resources-->
+    <color name="our_gray">#37474f</color>
+    <color name="our_black">#232b2b</color>
+    <color name="our_yellow">#ffa500</color>
+
+
 </resources>
