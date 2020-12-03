@@ -124,16 +124,18 @@ public class myprofile extends AppCompatActivity {
                 Log.d("hiiiiiii","hi");
             }
             else {
+                int ct = 0;
                 for (Map.Entry m: subDomains.entrySet()){
+                    if(ct!=0){
+                        s += "\n\n";
+                    }
+                    ct++;
                     String dname = m.getKey().toString();
                     ArrayList<String> snames = (ArrayList<String>) m.getValue();
                     s += dname + " : ";
                     int i=0;
                     for(i=0; i< snames.size(); i++ ){
                         s += snames.get(i)+"   ";
-                    }
-                    if(i!=snames.size()-1) {
-                        s += "\n\n";
                     }
                 }
                 Log.d("hii", s);
@@ -176,14 +178,18 @@ public class myprofile extends AppCompatActivity {
                         Log.d("hiiiiiii","hi");
                     }
                     else {
+                        int ct=0;
                         for (Map.Entry m: subDomains.entrySet()){
+                            if(ct!=0){
+                                s += "\n\n";
+                            }
+                            ct++;
                             String dname = m.getKey().toString();
                             ArrayList<String> snames = (ArrayList<String>) m.getValue();
                             s += dname + " : ";
                             for(int i=0; i< snames.size(); i++ ){
                                 s += snames.get(i)+"   ";
                             }
-                            s += "\n\n";
                         }
                         Log.d("hii", s);
                         domains.setText(s);
