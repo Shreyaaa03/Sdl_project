@@ -6,6 +6,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
+    android:backgroundTint="@color/our_yellow"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true">
 
@@ -18,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Group Id: N.A."
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_marginLeft="10dp"
             android:layout_alignParentLeft="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Problem Statement: N.A."
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_alignParentStart="true"

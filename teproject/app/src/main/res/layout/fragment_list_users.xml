@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/our_gray">
+    android:backgroundTint="@color/our_gray">
 
     <TextView
         android:id="@+id/list_heading"
@@ -25,17 +25,29 @@
         android:paddingHorizontal="20dp">
 
         <ImageView
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:src="@drawable/ic_search_foreground"/>
 
         <EditText
             android:id="@+id/txt_search_users"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_weight="5"
             android:hint="Search Names..."
             android:textColorHint="@color/faded_gray"
             android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_filter"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:text="FILTER"
+            android:backgroundTint="@color/our_black"/>
+
+
 
     </LinearLayout>
 
@@ -44,8 +56,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
+        android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@color/our_yellow"
+        android:scrollbarSize="2dp"
         />
 
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.cardview.widget.CardView>

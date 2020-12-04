@@ -1,6 +1,9 @@
 package com.example.teproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,7 +21,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,16 +35,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 public class ProjectsFragment extends Fragment {
 
+    private static final String TAG = "ProjectsFragment";
     private View thisView;
     private int year;
 
@@ -87,12 +101,9 @@ public class ProjectsFragment extends Fragment {
                 groupIntent.putExtra("groupsOverView", currUser);
                 groupIntent.putExtra("groupId", documentSnapshot.getId());
                 startActivity(groupIntent);
-
-
             }
         });
         adapter.startListening();
-
     }
 
 //    // This event is triggered soon after onCreateView().
@@ -102,6 +113,6 @@ public class ProjectsFragment extends Fragment {
 //    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 //        super.onViewCreated(view, savedInstanceState);
 //        // Setup any handles to view objects here
-//        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
+//        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);spinner = thisView.findViewById(R.id.spinner_filter);
 //    }
 }

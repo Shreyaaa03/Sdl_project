@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/our_gray">
 
     <TextView
         android:id="@+id/list_heading"
@@ -12,15 +13,20 @@
         android:text="Find Project Groups"
         android:textSize="24sp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:paddingVertical="8dp"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/groups_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
+        android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@color/our_yellow"
+        android:scrollbarSize="2dp"
         />
 
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.cardview.widget.CardView>
