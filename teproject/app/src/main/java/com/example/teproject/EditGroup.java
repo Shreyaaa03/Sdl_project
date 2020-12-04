@@ -1,9 +1,5 @@
 package com.example.teproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,16 +11,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -80,7 +79,7 @@ public class EditGroup extends AppCompatActivity {
 
     }
 
-    /*
+
 
     public void getDetails(){
         docR = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
@@ -90,7 +89,7 @@ public class EditGroup extends AppCompatActivity {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
                     problem_statement = document.getString("ProblemStatement");
-                    if(!problem_statement.isEmpty()){
+                    if(problem_statement != null){
                         text.setText(problem_statement);
                     }
                     Map<String, Object> map1 = document.getData();
@@ -125,7 +124,7 @@ public class EditGroup extends AppCompatActivity {
     }
 
 
-     */
+
 
 
     public void getGroupID(){
@@ -137,7 +136,7 @@ public class EditGroup extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     GroupID = documentSnapshot.getString("GroupID");
                     Log.d("c", GroupID);
-                   // getDetails();
+                    getDetails();
 
                 }
             }
@@ -151,6 +150,7 @@ public class EditGroup extends AppCompatActivity {
         // Add the new row before the add field button.
         parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
     }
+
 
 
     public void onDelete(View v) {

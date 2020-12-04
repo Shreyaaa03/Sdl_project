@@ -9,6 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
+        android:textColor="@color/white"
         android:inputType="text"/>
     <Spinner
         android:id="@+id/type_spinner"
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:entries="@array/types"
+        android:textColor="@color/white"
         android:gravity="right" />
     <ImageView
         android:id="@+id/delete_button"
