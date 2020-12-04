@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@color/white"
+    android:background="@color/our_gray"
     android:id="@+id/child_linear"
     android:layout_margin="5dp">
 
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:id="@+id/title"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:paddingLeft="30dp" />
         <ImageView

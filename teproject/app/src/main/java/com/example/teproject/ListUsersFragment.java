@@ -99,7 +99,8 @@ public class ListUsersFragment extends Fragment {
                 checkedInitialItems = 0;
                 backUp = 0;
 
-                Toast.makeText(getContext(), listDomains.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), listDomains.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Data Loaded!", Toast.LENGTH_SHORT).show();
                 ArrayList<String> selectedItems = new ArrayList<>();
 
                 btnFilter.setOnClickListener(new View.OnClickListener() {

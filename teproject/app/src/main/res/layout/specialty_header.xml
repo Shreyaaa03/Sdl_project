@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:id="@+id/header_linear"
+    android:background="@color/our_gray"
     android:layout_margin="2dp">
 
 

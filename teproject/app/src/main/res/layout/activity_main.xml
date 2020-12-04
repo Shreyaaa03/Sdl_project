@@ -39,6 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             app:menu="@menu/bottom_menu"
+            android:background="@color/black"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
+            app:itemTextColor="@drawable/bottom_navigation_selector"
             />
 
     </LinearLayout>

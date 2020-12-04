@@ -220,9 +220,9 @@ public class DomainsAdapter extends BaseExpandableListAdapter {
         header.setText(heading);
         int color;
         if(check_groups.get(heading) == 0)
-            color = ContextCompat.getColor(context,R.color.faded_gray);
+            color = ContextCompat.getColor(context,R.color.our_light_gray);
         else {
-            color = ContextCompat.getColor(context, R.color.black);
+            color = ContextCompat.getColor(context, R.color.white);
         }
         header.setTextColor(color);
         return grid;
@@ -244,11 +244,11 @@ public class DomainsAdapter extends BaseExpandableListAdapter {
         int color;
         if (check_states.get(grpPos).get(childPos) == 1) {
             tick.setImageResource(R.drawable.ic_checkbox_filled_foreground);
-            color = ContextCompat.getColor(context, R.color.black);
+            color = ContextCompat.getColor(context, R.color.white);
         }
         else {
             tick.setImageResource(R.drawable.ic_checkbox_empty_foreground);
-            color = ContextCompat.getColor(context,R.color.faded_gray);
+            color = ContextCompat.getColor(context,R.color.our_light_gray);
         }
         header.setTextColor(color);
         grid.setOnClickListener(new View.OnClickListener() {
@@ -259,12 +259,12 @@ public class DomainsAdapter extends BaseExpandableListAdapter {
                 if(x == 0) {
                     check_states.get(grpPos).set(childPos, 1);
                     tick.setImageResource(R.drawable.ic_checkbox_filled_foreground);
-                    color = ContextCompat.getColor(context, R.color.black);
+                    color = ContextCompat.getColor(context, R.color.white);
                 }
                 else {
                     check_states.get(grpPos).set(childPos, 0);
                     tick.setImageResource(R.drawable.ic_checkbox_empty_foreground);
-                    color = ContextCompat.getColor(context,R.color.faded_gray);
+                    color = ContextCompat.getColor(context,R.color.our_light_gray);
                 }
                 header.setTextColor(color);
 
