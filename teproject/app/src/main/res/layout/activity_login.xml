@@ -4,40 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#344955"
     tools:context=".Login">
-
-    <EditText
-        android:id="@+id/lemail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:lineSpacingExtra="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/lpassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.651" />
-
-    <EditText
-        android:id="@+id/lpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:lineSpacingExtra="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/lLoginbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/lLoginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#E9040303"
+        android:backgroundTint="#E9040303"
         android:text="Login"
+        android:textColorHint="#FFFFFF"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,21 +27,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create a new account"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.833" />
 
-    <TextView
-        android:id="@+id/textView3"
+    <EditText
+        android:id="@+id/lemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Or"
-        app:layout_constraintBottom_toTopOf="@+id/lSignUpbtn"
+        android:backgroundTint="#5EFFFFFF"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:lineSpacingExtra="10sp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#5EFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/lpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lLoginbtn" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <EditText
+        android:id="@+id/lpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="#5EFFFFFF"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:lineSpacingExtra="10sp"
+        android:textColorHint="#5EFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/lLoginbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTint="#FFFFFF"
+        android:progressTint="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lSignUpbtn" />
 
     <TextView
         android:id="@+id/textView4"
@@ -72,20 +86,25 @@
         android:text="LOGIN"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.096" />
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Or"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/lSignUpbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lSignUpbtn" />
+        app:layout_constraintTop_toBottomOf="@+id/lLoginbtn"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

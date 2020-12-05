@@ -21,10 +21,11 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:visibility="visible"
-            android:background="@color/black"
+            android:background="#4A6572"
+            app:titleTextColor="@color/white"
             android:elevation="4dp"
             android:theme="@style/Widget.AppCompat.Light.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -53,9 +54,5 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
-
-
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
