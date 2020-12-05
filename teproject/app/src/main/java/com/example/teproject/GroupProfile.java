@@ -95,7 +95,9 @@ public class GroupProfile extends AppCompatActivity {
                 String[] members = mem.split(", ", -2);
 
                 for (String a : members){
-                    member1.append(a+"\n");
+                    //  member1.append(a+"\n");
+                    a.trim();
+                    members(a);
                 }
             }
             if(groupsOverview.getTechStack() != null) {
@@ -230,7 +232,7 @@ public class GroupProfile extends AppCompatActivity {
                     Log.d("check2", " in group check2 - exists");
                     group_id.setText(GroupID);
             //        mLeaveGrpbtn.setVisibility(View.VISIBLE);
-                    String mentor = (documentSnapshot.getString("MentorID")).toString();
+                    String mentor = (documentSnapshot.getString("MentorID"));
                     if (mentor != null)
                         getMentor(mentor);
                     problem_statement.setText(documentSnapshot.getString("ProblemStatement"));

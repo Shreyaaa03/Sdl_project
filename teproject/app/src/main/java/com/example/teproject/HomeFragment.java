@@ -133,9 +133,9 @@ public class HomeFragment extends Fragment {
                     Log.d("check2", " in group check2 - exists");
                     group_id.setText(GroupID);
                     //        mLeaveGrpbtn.setVisibility(View.VISIBLE);
-                    String mentor = (documentSnapshot.getString("MentorID")).toString();
+                    String mentor = (documentSnapshot.getString("MentorID"));
                     if (mentor != null)
-                         getMentor(mentor);
+                        getMentor(mentor);
                     problem_statement.setText(documentSnapshot.getString("ProblemStatement"));
 
                     Map<String, Object> map = documentSnapshot.getData();
