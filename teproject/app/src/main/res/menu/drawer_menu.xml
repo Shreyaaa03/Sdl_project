@@ -6,11 +6,11 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="My profile" />
+            android:title="My Profile" />
         <item
             android:id="@+id/nav_group_profile"
             android:icon="@drawable/ic_baseline_group_24"
-            android:title="Home" />
+            android:title="My Group" />
         <item
             android:id="@+id/nav_domain"
             android:icon="@drawable/ic_domains"
