@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".Register"
+    android:background="@color/our_gray">
 
     <Button
         android:id="@+id/rsignupbtn"
@@ -16,7 +17,8 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.783"
+        />
 
     <Button
         android:id="@+id/rloginbutn"
@@ -29,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rsignupbtn"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintVertical_bias="0.393"
+        />
 
     <EditText
         android:id="@+id/name"
@@ -43,7 +46,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintVertical_bias="0.065"
+        android:textColorHint="@color/our_light_gray"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/registrationID"
@@ -59,7 +64,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.249" />
+        app:layout_constraintVertical_bias="0.249"
+        android:textColorHint="@color/our_light_gray"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/branchspinner"
@@ -73,7 +80,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintVertical_bias="0.331"
+        android:textColorHint="@color/our_light_gray"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/email"
@@ -87,7 +96,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.416"
+        android:textColorHint="@color/our_light_gray"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/password"
@@ -100,7 +111,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/our_light_gray"
+        android:textColor="@color/white"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -127,7 +140,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.064"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/textView11"
@@ -140,7 +154,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/rollnostudent"
@@ -155,7 +170,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintVertical_bias="0.583"
+        android:textColor="@color/white"
+        android:textColorHint="@color/our_light_gray"/>
 
     <RadioGroup
         android:layout_width="260dp"
@@ -179,7 +196,8 @@
             app:layout_constraintHorizontal_bias="0.262"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.675" />
+            app:layout_constraintVertical_bias="0.675"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioStudent"
@@ -192,7 +210,8 @@
             app:layout_constraintHorizontal_bias="0.734"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.675" />
+            app:layout_constraintVertical_bias="0.675"
+            android:textColor="@color/white"/>
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
