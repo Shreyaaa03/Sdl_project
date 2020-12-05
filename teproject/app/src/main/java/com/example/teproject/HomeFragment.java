@@ -134,7 +134,8 @@ public class HomeFragment extends Fragment {
                     group_id.setText(GroupID);
                     //        mLeaveGrpbtn.setVisibility(View.VISIBLE);
                     String mentor = (documentSnapshot.getString("MentorID")).toString();
-                    getMentor(mentor);
+                    if (mentor != null)
+                         getMentor(mentor);
                     problem_statement.setText(documentSnapshot.getString("ProblemStatement"));
 
                     Map<String, Object> map = documentSnapshot.getData();
