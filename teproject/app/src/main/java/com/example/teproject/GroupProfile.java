@@ -193,6 +193,31 @@ public class GroupProfile extends AppCompatActivity {
         });
     }
 
+    void members(String mem){
+        docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+mem);
+        docR_2.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String name = documentSnapshot.getString("Name").toString();
+                member1.append(mem+ " - "+ name+ "\n");
+            }
+        });
+
+    }
+
+    void getMentor(String mem){
+        docR_2 = fStore.document("year/"+year+"- "+(year+1)+"/Users/"+mem);
+        docR_2.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String name = documentSnapshot.getString("Name").toString();
+                mentor_id.setText(mem+ " - "+ name+ "\n");
+            }
+        });
+
+    }
 
     void group(int year, String GroupID){
         docR_3 = fStore.document("year/"+year+"- "+(year+1)+"/Groups/"+GroupID);
@@ -205,7 +230,8 @@ public class GroupProfile extends AppCompatActivity {
                     Log.d("check2", " in group check2 - exists");
                     group_id.setText(GroupID);
             //        mLeaveGrpbtn.setVisibility(View.VISIBLE);
-                    mentor_id.setText(documentSnapshot.getString("MentorID"));
+                    String mentor = (documentSnapshot.getString("MentorID")).toString();
+                    getMentor(mentor);
                     problem_statement.setText(documentSnapshot.getString("ProblemStatement"));
 
                     Map<String, Object> map = documentSnapshot.getData();
@@ -216,7 +242,9 @@ public class GroupProfile extends AppCompatActivity {
                             String[] members = mem.split(", ", -2);
 
                             for (String a : members){
-                                 member1.append(a+"\n");
+                               //  member1.append(a+"\n");
+                                a.trim();
+                                members(a);
                             }
                         }
                     }
