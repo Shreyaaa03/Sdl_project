@@ -45,7 +45,7 @@ public class myprofile extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String RegID;
-    TextView fullname, emailid, phone, branch, rollno, role, groupid, linkedin, github, resume, upload;
+    TextView fullname, emailid, phone, branch, rollno, role, groupid, linkedin, github, resume, upload, regid;
     Button editProfBtn;
     TextView domains;
     ImageView profile_pic;
@@ -68,6 +68,7 @@ public class myprofile extends AppCompatActivity {
         github = findViewById(R.id.github);
         resume = findViewById(R.id.resume);
         domains = findViewById(R.id.domaintext);
+        regid = findViewById(R.id.RegID);
 
         upload = findViewById(R.id.upload);
         profile_pic = findViewById(R.id.profilepicture);
@@ -144,6 +145,7 @@ public class myprofile extends AppCompatActivity {
             linkedin.setText(userOverview.getLinkedin());
             github.setText(userOverview.getGithub());
             resume.setText(userOverview.getResume());
+            regid.setText(userOverview.getRegistrationID());
 
             Map<String , ArrayList<String>> subDomains = new HashMap<>();
             subDomains = userOverview.getDomains();
@@ -231,6 +233,7 @@ public class myprofile extends AppCompatActivity {
                     linkedin.setText(documentSnapshot.getString("Linkedin"));
                     github.setText(documentSnapshot.getString("Github"));
                     resume.setText(documentSnapshot.getString("Resume"));
+                    regid.setText(documentSnapshot.getString("RegistrationID"));
 
                     Map<String , ArrayList<String>> subDomains = new HashMap<>();
                     subDomains = (Map<String , ArrayList<String>>) documentSnapshot.get("Domains");
