@@ -219,7 +219,7 @@ public class ListUsersFragment extends Fragment {
             query = userdomainsRef.whereEqualTo("Role", true);
         } else {
             query = userdomainsRef.whereEqualTo("Role", false);
-            txt_title.setText("Find your mentors");
+            txt_title.setText("FIND YOUR MENTORS");
         }
         FirestoreRecyclerOptions<UserOverview> options = new FirestoreRecyclerOptions.Builder<UserOverview>()
                 .setQuery(query, UserOverview.class)
@@ -272,7 +272,7 @@ public class ListUsersFragment extends Fragment {
             query = userdomainsRef.whereEqualTo("Role", true);
         } else {
             query = userdomainsRef.whereEqualTo("Role", false);
-            txt_title.setText("Find your mentors");
+            txt_title.setText("FIND YOUR MENTORS");
         }
         FirestoreRecyclerOptions<UserOverview> options = new FirestoreRecyclerOptions.Builder<UserOverview>()
                 .setQuery(query, UserOverview.class)
@@ -287,7 +287,7 @@ public class ListUsersFragment extends Fragment {
             q2 = userdomainsRef.whereEqualTo("Role", false)
                     .whereGreaterThanOrEqualTo("Name", toString)
                     .whereLessThanOrEqualTo("Name", toString+"\uf8ff");
-            txt_title.setText("Find your mentors");
+            txt_title.setText("FIND YOUR MENTORS");
         }
         FirestoreRecyclerOptions<UserOverview> options2 = new FirestoreRecyclerOptions.Builder<UserOverview>()
                 .setQuery(q2, UserOverview.class)

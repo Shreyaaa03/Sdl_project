@@ -19,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="15dp"
+        app:cardElevation="10dp"
         app:cardPreventCornerOverlap="true"
         android:paddingBottom="10dp">
 
@@ -42,7 +43,7 @@
                 android:textColor="@color/white"
                 style="@style/HomeCardTitle"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="30dp">
             </TextView>
 
@@ -59,8 +60,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="@color/white"
-                >
+                android:background="@color/white">
 
             </LinearLayout>
 
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/problem_statement"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     style="@style/HomeCardTitle"
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"
@@ -87,7 +87,7 @@
                     android:id="@+id/problem_statement_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textColor="@color/black"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_marginTop="10dp"
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/techstack"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textColor="@color/black"
                     style="@style/HomeCardTitle"
                     android:layout_marginTop="10dp"
@@ -116,37 +116,34 @@
                     android:layout_margin="5dp"
                     android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/layout_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingTop="5dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/tech_edit_text"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textColor="@color/black"
-                        android:inputType="text"/>
-                    <Spinner
-                        android:id="@+id/type_spinner"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:textColor="@color/black"
-                        android:entries="@array/types"
-                        android:gravity="right" />
-                    <ImageView
-                        android:id="@+id/delete_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_close_24"
-                        android:onClick="onDelete"/>
-                </LinearLayout>
+                    <LinearLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:id="@+id/tech_edit_text"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:textColor="@color/black"
+                            android:inputType="text"/>
+                        <Spinner
+                            android:id="@+id/type_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:entries="@array/types"
+                            android:textColor="@color/black"
+                            android:gravity="right" />
+                        <ImageView
+                            android:id="@+id/delete_button"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_baseline_close_24"
+                            android:onClick="onDelete"/>
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
