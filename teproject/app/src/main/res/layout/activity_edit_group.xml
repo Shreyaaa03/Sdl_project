@@ -155,40 +155,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#EDE7F6">
+                android:background="@color/white">
 
 
-            <Button
-                android:id="@+id/button_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ADD"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="@color/purple_500"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:textColor="@color/white"
-                android:paddingLeft="10dp"
-                android:onClick="onAddField"
-                android:paddingRight="10dp">
+                <Button
+                    android:id="@+id/button_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/white"
+                    android:onClick="onAddField"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="ADD"
+                    android:textColor="@color/purple_500"
+                    app:strokeColor="#673AB7"
+                    app:strokeWidth="1dp">
 
-            </Button>
+                </Button>
 
             <Button
                 android:id="@+id/button_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SAVE"
-                android:background="@drawable/custom_button"
+                android:text="SAVE CHANGES"
                 android:onClick="onSubmit"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/purple_500"
-                android:layout_marginTop="25dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginBottom="30dp"
-                android:textColor="@color/white"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white">
 
             </Button>
 
