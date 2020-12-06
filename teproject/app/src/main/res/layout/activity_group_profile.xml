@@ -5,13 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="#000"
-
     tools:context=".GroupProfile">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        style="@style/CardView.Light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -27,14 +24,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:background="@color/our_black"
-            >
+            android:paddingBottom="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="225dp"
-                android:background="@color/our_yellow">
+                android:layout_height="225dp">
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -48,7 +42,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,14 +63,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/our_light_gray"
-                            >
+                            android:padding="12dp">
 
                             <ImageView
                                 android:id="@+id/image1"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:src="@drawable/ic_baseline_info_24"
+                                android:layout_gravity="top"
                                 />
 
                             <LinearLayout
@@ -89,11 +82,12 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="15dp"
+                                    android:layout_marginStart="17dp"
                                     android:text="@string/groupid"
-                                    android:textSize="20dp"
-                                    android:textColor="@color/white"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:fontFamily="@font/rubik"
+                                    android:textSize="14dp"
+                                    android:textColor="#616161"
+                                    android:paddingBottom="5dp"
                                     >
 
                                 </TextView>
@@ -103,10 +97,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
+                                    android:fontFamily="@font/rubik"
+                                    android:paddingStart="5dp"
                                     android:text=""
-                                    android:textColor="@color/white"
-                                    android:textSize="17dp"
-                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp">
+
+                                </TextView>
                             </LinearLayout>
 
 
@@ -154,12 +151,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/our_light_gray">
+                            android:background="@color/white"
+                            android:padding="12dp">
 
                             <ImageView
                                 android:id="@+id/image2"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="top"
                                 android:src="@drawable/ic_baseline_assignment_24" />
 
                             <LinearLayout
@@ -172,9 +171,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text="@string/problem_statement"
-                                    android:textColor="@color/white"
-                                    android:textSize="20dp"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                                    android:fontFamily="@font/rubik"
+                                    android:textColor="#616161"
+                                    android:textSize="14dp"
+                                    android:paddingBottom="5dp">
 
                                 </TextView>
 
@@ -184,9 +184,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text=""
-                                    android:textColor="@color/white"
-                                    android:textSize="17dp"
-                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+                                    android:fontFamily="@font/rubik"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp"
+                                    android:paddingStart="5dp">
+
+                                </TextView>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -213,12 +216,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/our_light_gray">
+                            android:background="@color/white"
+                            android:padding="12dp">
 
                             <ImageView
                                 android:id="@+id/image3"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="top"
                                 android:src="@drawable/ic_baseline_engineering_24" />
 
                             <LinearLayout
@@ -231,9 +236,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text="@string/mentorid"
-                                    android:textColor="@color/white"
-                                    android:textSize="20dp"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                                    android:fontFamily="@font/rubik"
+                                    android:textSize="14dp"
+                                    android:textColor="#616161"
+                                    android:paddingBottom="5dp">
                                 </TextView>
 
                                 <TextView
@@ -242,9 +248,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text=""
-                                    android:textColor="@color/white"
-                                    android:textSize="17dp"
-                                    style="@style/TextAppearance.AppCompat.Body1"></TextView>
+                                    android:fontFamily="@font/rubik"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp"
+                                    android:paddingStart="5dp">
+                                </TextView>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -271,12 +279,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/our_light_gray">
+                            android:padding="12dp">
 
                             <ImageView
                                 android:id="@+id/image4"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="top"
                                 android:src="@drawable/ic_baseline_groups_24" />
 
                             <LinearLayout
@@ -289,9 +298,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text="@string/members"
-                                    android:textSize="20dp"
-                                    android:textColor="@color/white"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                                    android:fontFamily="@font/rubik"
+                                    android:textSize="14dp"
+                                    android:textColor="#616161"
+                                    android:paddingBottom="7dp">
 
                                 </TextView>
 
@@ -301,9 +311,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text=""
-                                    android:textSize="17dp"
-                                    android:textColor="@color/white"
-                                    style="@style/TextAppearance.AppCompat.Body1">
+                                    android:fontFamily="@font/rubik"
+                                    android:textSize="16dp"
+                                    android:paddingStart="5dp"
+                                    android:textColor="@color/black">
                                 </TextView>
 
 
@@ -334,18 +345,20 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/our_light_gray">
+                            android:padding="12dp">
 
                             <ImageView
                                 android:id="@+id/image5"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="top"
                                 android:src="@drawable/ic_baseline_code_24" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                               >
 
                                 <TextView
                                     android:id="@+id/group5"
@@ -353,9 +366,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
                                     android:text="@string/techstack"
-                                    android:textSize="20dp"
-                                    android:textColor="@color/white"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                                    android:fontFamily="@font/rubik"
+                                    android:textSize="14dp"
+                                    android:textColor="#616161"
+                                    android:paddingBottom="5dp">
                                 </TextView>
 
                                 <TextView
@@ -363,9 +377,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
-                                    android:textSize="17dp"
-                                    android:textColor="@color/white"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1">
+                                    android:text=""
+                                    android:fontFamily="@font/rubik"
+                                    android:textSize="16dp"
+                                    android:paddingStart="5dp"
+                                    android:textColor="@color/black">
                                 </TextView>
 
                             </LinearLayout>

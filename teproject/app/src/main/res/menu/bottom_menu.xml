@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/ic_home"
+        
         android:title="@string/navigation_home" />
     <item
         android:id="@+id/nav_students"
@@ -14,6 +15,6 @@
         android:title="@string/navigation_teacher" />
     <item
         android:id="@+id/nav_projects"
-        android:icon="@drawable/ic_baseline_assignment_24"
+        android:icon="@drawable/ic_project12"
         android:title="@string/navigation_projects" />
 </menu>
