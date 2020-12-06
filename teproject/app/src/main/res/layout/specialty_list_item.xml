@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@color/our_gray"
+    android:background="@color/white"
     android:id="@+id/child_linear"
     android:layout_margin="5dp">
 
@@ -21,7 +21,9 @@
             android:id="@+id/title"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:paddingLeft="30dp" />
+            android:paddingLeft="30dp"
+            android:textColor="@color/black"
+           />
         <ImageView
             android:layout_width="0dp"
             android:layout_height="20dp"

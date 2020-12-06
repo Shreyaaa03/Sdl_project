@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:id="@+id/header_linear"
-    android:background="@color/our_gray"
+    android:background="@color/white"
     android:layout_margin="2dp">
 
 
@@ -15,6 +15,7 @@
         android:id="@+id/specialty_header"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"/>
 
 </LinearLayout>

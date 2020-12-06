@@ -156,7 +156,7 @@ public class ListUsersFragment extends Fragment {
                                         String str = "Domains.";
                                         str += finalSelected;
                                         q2 = q2.whereNotEqualTo(str, "");
-                                        txt_title.setText("Find your mentors");
+                                        txt_title.setText("FIND YOUR MENTORS");
                                     }
                                     FirestoreRecyclerOptions<UserOverview> options2 = new FirestoreRecyclerOptions.Builder<UserOverview>()
                                             .setQuery(q2, UserOverview.class)
