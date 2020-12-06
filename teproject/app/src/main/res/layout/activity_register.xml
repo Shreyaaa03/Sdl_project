@@ -76,8 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.249"
-        android:textColorHint="@color/our_light_gray"
-        android:textColor="@color/white"/>
+        android:textColorHint="@color/our_light_gray" />
 
     <EditText
         android:id="@+id/branchspinner"
@@ -97,8 +96,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.331"
-        android:textColorHint="@color/our_light_gray"
-        android:textColor="@color/white"/>
+        android:textColorHint="@color/our_light_gray" />
 
     <EditText
         android:id="@+id/email"
@@ -118,8 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.416"
-        android:textColorHint="@color/our_light_gray"
-        android:textColor="@color/white"/>
+        android:textColorHint="@color/our_light_gray" />
 
     <EditText
         android:id="@+id/password"
@@ -138,8 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColorHint="@color/our_light_gray"
-        android:textColor="@color/white"/>
+        android:textColorHint="@color/our_light_gray" />
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -4,27 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#37474f">
+    android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp">
+
         <Button
             android:id="@+id/savechanges"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Changes"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fadingEdge="vertical"
-            android:backgroundTint="#ffa500"></Button>
+            android:text="Save Changes"></Button>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/savechanges"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:id="@+id/textview1"
             android:layout_marginLeft="12dp"
@@ -40,7 +43,7 @@
             android:layout_toRightOf="@id/textview1"
             android:layout_below="@id/savechanges"
             android:id="@+id/edittext1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             ></EditText>
 
         <TextView
@@ -48,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview1"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/textview2"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
@@ -63,7 +66,7 @@
             android:layout_toRightOf="@id/textview2"
             android:layout_below="@id/edittext1"
             android:id="@+id/edittext2"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             ></EditText>
 
         <TextView
@@ -71,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview2"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/textview3"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
@@ -86,7 +89,7 @@
             android:layout_toRightOf="@id/textview3"
             android:layout_below="@id/edittext2"
             android:id="@+id/edittext3"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             ></EditText>
 
         <TextView
@@ -94,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview3"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/textview4"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
@@ -109,7 +112,7 @@
             android:layout_toRightOf="@id/textview4"
             android:layout_below="@id/edittext3"
             android:id="@+id/edittext4"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             ></EditText>
 
         <TextView
@@ -117,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview4"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/textview5"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
@@ -132,7 +135,7 @@
             android:layout_toRightOf="@id/textview5"
             android:layout_below="@id/edittext4"
             android:id="@+id/edittext5"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             ></EditText>
 
 
