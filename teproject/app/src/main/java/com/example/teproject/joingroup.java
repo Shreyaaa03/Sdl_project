@@ -2,6 +2,7 @@ package com.example.teproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,11 +44,24 @@ public class joingroup extends AppCompatActivity {
     FirebaseAuth fAuth;
     private DocumentReference docRef, docRef2;
     private boolean status, exist, fireRole, firegroupid;
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joingroup);
+
+        mToolbar = findViewById(R.id.back_toolbar);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                // Your code
+                finish();
+            }
+        });
 
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);

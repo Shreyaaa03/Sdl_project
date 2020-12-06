@@ -1,6 +1,7 @@
 package com.example.teproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,6 +38,7 @@ public class EditGroup extends AppCompatActivity {
     Calendar calendar = Calendar.getInstance();
     int year = calendar.get(Calendar.YEAR);
 
+    private static final String TAG = "MainActivity";
     private LinearLayout parentLinearLayout;
     EditText text;
     FirebaseFirestore fStore;
@@ -46,12 +49,30 @@ public class EditGroup extends AppCompatActivity {
     ImageView delete;
 
     String problem_statement="";
+    private Toolbar mToolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_group);
+
+        mToolbar = findViewById(R.id.back_toolbar);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                // Your code
+                Intent groupIntent = new Intent(getApplicationContext(), GroupProfile.class);
+                groupIntent.putExtra("activity", TAG);
+                startActivity(groupIntent);
+                finish();
+            }
+        });
+
+
         parentLinearLayout=(LinearLayout) findViewById(R.id.parent_linear_layout);
         text = findViewById(R.id.problem_statement_text);
         add = findViewById(R.id.button_add);

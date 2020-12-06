@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +27,7 @@ import java.util.Map;
 
 public class editprofile extends AppCompatActivity {
 
+    private static final String CALLING_TAG = "MainActivity";
     TextView email, phone, linkedin, github, resume;
     Button savechanges;
 
@@ -33,12 +35,28 @@ public class editprofile extends AppCompatActivity {
     FirebaseAuth fAuth;
 
     String RegID;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
 
+        mToolbar = findViewById(R.id.back_toolbar);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                // Your code
+                Intent profileIntent = new Intent(getApplicationContext(), myprofile.class);
+                profileIntent.putExtra("caller", CALLING_TAG);
+                startActivity(profileIntent);
+                finish();
+            }
+        });
+        
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
 

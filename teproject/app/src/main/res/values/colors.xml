@@ -12,6 +12,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="faded_gray">#BDC4C6</color>
     <color name="blue_active">#4285F4</color>
+    <color name="deep_purple_900">#311B92</color>
 
 <!--    Final app color resources-->
     <color name="our_gray">#37474f</color>

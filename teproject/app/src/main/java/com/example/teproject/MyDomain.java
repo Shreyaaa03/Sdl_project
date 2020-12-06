@@ -3,6 +3,7 @@ package com.example.teproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class MyDomain extends AppCompatActivity {
     DomainsAdapter adapter;
     Button btnSave;
     String RegID;
+    Toolbar mToolbar;
 
     private int year;
     FirebaseAuth fAuth;
@@ -46,6 +48,7 @@ public class MyDomain extends AppCompatActivity {
     private CollectionReference userdomainsRef;
 
     String activity;
+
 
 
 
@@ -81,6 +84,17 @@ public class MyDomain extends AppCompatActivity {
             btnSave.setText("SAVE");
         }
 
+        mToolbar = findViewById(R.id.back_toolbar);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                // Your code
+                finish();
+            }
+        });
 
         // setting up connection...
         Calendar calendar = Calendar.getInstance();
