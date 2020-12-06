@@ -406,7 +406,7 @@
                     android:layout_marginBottom="50dp"
                     android:text="EDIT"
                     android:textSize="20dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     style="@style/TextAppearance.AppCompat.Button">
 
                 </Button>
