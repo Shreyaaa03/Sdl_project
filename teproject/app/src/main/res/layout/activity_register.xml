@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
-    android:background="@color/our_gray">
+    tools:context=".Register">
 
     <Button
         android:id="@+id/rsignupbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
         android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="Already registered? Login here"
+        android:background="@drawable/custom_button"
+        android:text="Already registered? LOGIN here"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,9 +38,14 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:ems="10"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_name"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="12dp"
         android:hint="Full Name"
         android:inputType="textPersonName"
         android:lineSpacingExtra="10sp"
@@ -47,16 +54,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.065"
-        android:textColorHint="@color/our_light_gray"
-        android:textColor="@color/white"/>
+        android:textColorHint="@color/our_light_gray"/>
+
 
     <EditText
         android:id="@+id/registrationID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:autofillHints=""
         android:ems="10"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_reg"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="12dp"
         android:hint="Registration ID"
         android:inputType="textPersonName"
         android:lineSpacingExtra="10sp"
@@ -70,9 +81,14 @@
 
     <EditText
         android:id="@+id/branchspinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:ems="10"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_branch"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="12dp"
         android:hint="Branch"
         android:inputType="textPersonName"
         android:lineSpacingExtra="10sp"
@@ -86,9 +102,14 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:ems="10"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_email"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="12dp"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:lineSpacingExtra="10sp"
@@ -102,9 +123,14 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:ems="10"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_pass"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="12dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:lineSpacingExtra="10sp"
@@ -140,13 +166,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064"
-        android:textColor="@color/white"/>
+        app:layout_constraintVertical_bias="0.064" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="22dp"
-        android:layout_height="29dp"
+        android:layout_width="12dp"
+        android:layout_height="23dp"
         android:text="or"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/rloginbutn"
@@ -154,14 +179,18 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:textColor="@color/white"/>
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/rollnostudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:ems="10"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_roll"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="12dp"
         android:hint="Roll No."
         android:inputType="textPersonName"
         android:lineSpacingExtra="10sp"
@@ -196,8 +225,7 @@
             app:layout_constraintHorizontal_bias="0.262"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.675"
-            android:textColor="@color/white"/>
+            app:layout_constraintVertical_bias="0.675" />
 
         <RadioButton
             android:id="@+id/radioStudent"
@@ -210,8 +238,8 @@
             app:layout_constraintHorizontal_bias="0.734"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.675"
-            android:textColor="@color/white"/>
+            app:layout_constraintVertical_bias="0.675" />
+
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

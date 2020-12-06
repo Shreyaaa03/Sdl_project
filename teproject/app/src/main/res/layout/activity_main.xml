@@ -24,6 +24,7 @@
             android:background="#4A6572"
             app:titleTextColor="@color/white"
             android:elevation="4dp"
+            android:gravity="left"
             android:theme="@style/Widget.AppCompat.Light.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
 
