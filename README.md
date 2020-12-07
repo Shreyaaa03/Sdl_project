@@ -1,1 +1,1 @@
-# Sdl_project
+# SDL mini project
