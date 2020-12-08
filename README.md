@@ -6,11 +6,11 @@
 
 ## SDL MINI PROJECT REPORT
 
-**Group Members:**
-31161 – Shreya
-31164 – Prathamesh S.
-31168 – Tanushree
-31170 – Prathamesh T.
+**Group Members:**<br>
+31161 – Shreya<br>
+31164 – Prathamesh S.<br>
+31168 – Tanushree<br>
+31170 – Prathamesh T.<br>
 -----------------------------------------------------------------------------------------------------------------
 **TITLE**
 
