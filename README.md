@@ -70,7 +70,6 @@ the domains, and groups and join them easily.
 1. https://developer.android.com/studio/intro
 2. https://firebase.google.com/docs
 
-**UI’s:**
 
 
 
